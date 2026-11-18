@@ -1,0 +1,50 @@
+name: Atualizar manifest.json de estudos-banestes
+
+on:
+  push:
+    branches:
+      - main
+      - master
+    paths:
+      - 'estudos-banestes/*.md'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-manifest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do repositório
+        uses: actions/checkout@v4
+
+      - name: Gerar estudos-banestes/manifest.json
+        run: |
+          mkdir -p estudos-banestes
+          python3 - << 'EOF'
+          import json
+          from pathlib import Path
+
+          folder = Path("estudos-banestes")
+          md_files = sorted(f.name for f in folder.glob("*.md") if f.is_file())
+
+          manifest_path = folder / "manifest.json"
+          manifest_path.write_text(
+              json.dumps(md_files, ensure_ascii=False, indent=2) + "\n",
+              encoding="utf-8"
+          )
+          print("Manifest gerado:", md_files)
+          EOF
+
+      - name: Commit e push do manifest atualizado
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add estudos-banestes/manifest.json
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: atualizar estudos-banestes/manifest.json"
+            git push
+          else
+            echo "Nenhuma alteração no manifest.json."
+          fi
