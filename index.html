@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Estudos Banestes (FCC) — Portal de Revisão &amp; Anotações</title>
+  <title>Estudos Banestes (FCC) — Portal de Revisão &amp; Simulados</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -14,31 +14,36 @@
     <!-- CABEÇALHO SUPERIOR -->
     <header class="topbar">
       <div class="brand">
-        <button type="button" class="btn" id="btnOpenDrawer" aria-label="Abrir menu de matérias e arquivos">
-          ☰
+        <button type="button" class="btn btn-icon" id="btnOpenDrawer" aria-label="Abrir menu de matérias">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
         </button>
         <div class="brand-badge" aria-hidden="true">FCC</div>
-        <div style="min-width: 0;">
+        <div class="brand-text">
           <h1 class="brand-title">Estudos Banestes</h1>
-          <p class="brand-subtitle" id="repoStatusLabel">Raiz do repo • ./estudos-banestes/</p>
+          <p class="brand-subtitle" id="repoStatusLabel">Pasta • ./estudos-banestes/</p>
         </div>
       </div>
 
       <div class="topbar-actions">
-        <button type="button" class="btn btn-primary" id="btnLoadMd">
-          + .md
+        <button type="button" class="btn btn-primary" id="btnLoadMd" title="Importar arquivos .md">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          <span>Importar .md</span>
         </button>
         <input type="file" id="mdFileInput" accept=".md,.markdown,.txt" multiple hidden />
+        <input type="file" id="mdFolderInput" webkitdirectory directory multiple hidden />
         <input type="file" id="jsonImportInput" accept=".json,application/json" hidden />
 
-        <button type="button" class="btn" id="btnFocusMode" title="Alternar modo foco">
-          Foco
+        <button type="button" class="btn" id="btnFocusMode" title="Alternar modo leitura focada">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+          <span class="hide-xs">Foco</span>
         </button>
         <button type="button" class="btn" id="btnThemeToggle" title="Alternar tema claro/escuro">
-          Escuro
+          <span id="themeIcon"></span>
+          <span class="hide-xs" id="themeLabel">Escuro</span>
         </button>
-        <button type="button" class="btn btn-danger-ghost" id="btnResetAll" title="Restaurar dados iniciais">
-          Reset
+        <button type="button" class="btn btn-danger-ghost" id="btnResetAll" title="Limpar cache e dados locais">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/></svg>
+          <span class="hide-xs">Limpar</span>
         </button>
       </div>
     </header>
@@ -48,39 +53,58 @@
 
     <!-- ÁREA DE TRABALHO -->
     <div class="workspace">
-      <!-- BARRA LATERAL / DRAWER: ARQUIVOS .MD, GITHUB PAGES & PROGRESSO -->
-      <aside class="sidebar" id="sidebarDrawer" aria-label="Arquivos Markdown, GitHub Pages e progresso">
+      <!-- BARRA LATERAL / DRAWER -->
+      <aside class="sidebar" id="sidebarDrawer" aria-label="Matérias, sincronização e progresso">
         <div class="sidebar-mobile-head">
-          <strong style="font-size: 0.92rem;">Matérias &amp; Arquivos</strong>
-          <button type="button" class="btn" id="btnCloseDrawer" aria-label="Fechar menu">✕</button>
+          <strong>Matérias &amp; Repositório</strong>
+          <button type="button" class="btn btn-icon" id="btnCloseDrawer" aria-label="Fechar menu">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
         </div>
 
-        <div>
+        <!-- SINCRONIZAÇÃO COM ./estudos-banestes/ -->
+        <div class="sidebar-block">
           <div class="sidebar-section-title">
-            <span>Sincronizar ./estudos-banestes/</span>
-            <button type="button" class="btn" style="padding: 3px 8px; min-height: 26px; font-size: 0.72rem;" id="btnSyncRepo">
-              Atualizar
+            <span>Pasta ./estudos-banestes/</span>
+            <button type="button" class="btn btn-xs" id="btnSyncRepo">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+              Sincronizar
             </button>
           </div>
 
           <div id="dropzone" class="dropzone" tabindex="0" role="button" aria-label="Arraste arquivos Markdown aqui ou clique para selecionar">
-            <strong>Arraste arquivos .md aqui</strong>
-            <p>ou toque em <em>+ .md</em> para importar matérias locais.</p>
-            <small>Salvo automaticamente no navegador</small>
+            <div class="dropzone-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+            </div>
+            <strong>Arraste seus arquivos .md</strong>
+            <p>ou importe arquivos individuais / pasta local</p>
+            <div class="dropzone-btns">
+              <button type="button" class="btn btn-xs" id="btnSelectFilesInline">Arquivos .md</button>
+              <button type="button" class="btn btn-xs" id="btnSelectFolderInline">Pasta local</button>
+            </div>
           </div>
         </div>
 
-        <div>
+        <!-- LISTA DE MATÉRIAS -->
+        <div class="sidebar-block">
           <div class="sidebar-section-title">
             <span>Matérias Carregadas</span>
-            <span id="fileCountLabel">1</span>
+            <span class="pill-counter" id="fileCountLabel">0</span>
           </div>
+          <input
+            type="search"
+            id="docSearchInput"
+            class="field-input field-input-sm"
+            placeholder="Filtrar matérias..."
+            aria-label="Filtrar matérias carregadas"
+          />
           <div id="fileList" class="file-list"></div>
         </div>
 
-        <div class="progress-card">
+        <!-- PROGRESSO DA MATÉRIA ATIVA -->
+        <div class="progress-card" id="sidebarProgressCard">
           <div class="sidebar-section-title" style="margin-bottom: 6px;">
-            <span>Progresso de Revisão</span>
+            <span>Progresso da Matéria</span>
             <span id="progressPercent">0%</span>
           </div>
           <div class="progress-row">
@@ -92,157 +116,212 @@
           </div>
         </div>
 
-        <div>
+        <!-- CONFIGURAÇÃO REPO GITHUB (OPCIONAL) -->
+        <details class="repo-config-details">
+          <summary>Configurar repositório GitHub</summary>
+          <div class="repo-config-body">
+            <label for="githubRepoSlugInput" class="small-label">Repositório (usuario/repo):</label>
+            <div class="repo-input-row">
+              <input
+                type="text"
+                id="githubRepoSlugInput"
+                class="field-input field-input-sm"
+                placeholder="ex: marcelo/banestes-estudos"
+              />
+              <button type="button" class="btn btn-xs btn-primary" id="btnSaveRepoSlug">Salvar</button>
+            </div>
+            <p class="helper-hint">
+              No GitHub Pages a detecção é automática. Preencha acima apenas se estiver testando em domínio próprio ou localhost.
+            </p>
+          </div>
+        </details>
+
+        <!-- BACKUP -->
+        <div class="sidebar-block">
           <div class="sidebar-section-title">
             <span>Backup (Notas &amp; Respostas)</span>
           </div>
           <div class="backup-actions">
-            <button type="button" class="btn" id="btnExportJson" title="Baixar backup JSON de notas e respostas">
-              Exportar JSON
-            </button>
-            <button type="button" class="btn" id="btnImportJson" title="Restaurar backup JSON">
-              Importar JSON
-            </button>
+            <button type="button" class="btn btn-xs" id="btnExportJson">Exportar JSON</button>
+            <button type="button" class="btn btn-xs" id="btnImportJson">Importar JSON</button>
           </div>
-        </div>
-
-        <div class="github-guide-box">
-          <strong>GitHub Pages (Raiz do Repositório)</strong>
-          Mantenha este <code>index.html</code> na raiz do repositório e seus arquivos <code>.md</code> em <code>./estudos-banestes/</code>. Em repositórios públicos no GitHub Pages, a descoberta automática consulta a API do GitHub (com fallback para <code>./estudos-banestes/manifest.json</code> e importação manual).
         </div>
       </aside>
 
       <!-- CONTEÚDO PRINCIPAL -->
       <main class="main-content" id="mainContent">
-        <section class="doc-header" id="docHeader"></section>
-
-        <!-- ABAS DESKTOP -->
-        <nav class="tabs-bar" role="tablist" aria-label="Seções de estudo">
-          <button type="button" class="tab-btn active" data-tab="diagnostico" role="tab" aria-selected="true">
-            1. Diagnóstico
-          </button>
-          <button type="button" class="tab-btn" data-tab="material" role="tab" aria-selected="false">
-            2. Material <span class="tab-count" id="materialCountBadge">0</span>
-          </button>
-          <button type="button" class="tab-btn" data-tab="simulado" role="tab" aria-selected="false">
-            3. Simulado FCC <span class="tab-count" id="simuladoCountBadge">0</span>
-          </button>
-          <button type="button" class="tab-btn" data-tab="anotacoes" role="tab" aria-selected="false">
-            4. Anotações <span class="tab-count" id="anotacoesCountBadge">0</span>
-          </button>
-          <button type="button" class="tab-btn" data-tab="gabarito" role="tab" aria-selected="false">
-            5. Gabarito
-          </button>
-        </nav>
-
-        <!-- ABA 1: DIAGNÓSTICO -->
-        <section id="panel-diagnostico" class="panel active" role="tabpanel"></section>
-
-        <!-- ABA 2: MATERIAL DE ESTUDO -->
-        <section id="panel-material" class="panel" role="tabpanel"></section>
-
-        <!-- ABA 3: SIMULADO INTERATIVO -->
-        <section id="panel-simulado" class="panel" role="tabpanel">
-          <div class="quiz-toolbar">
-            <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
-              <button type="button" class="btn btn-primary" id="btnGradeQuiz">
-                Corrigir Simulado
-              </button>
-              <button type="button" class="btn" id="btnClearQuiz">
-                Limpar Respostas
-              </button>
-            </div>
-            <label style="display: inline-flex; align-items: center; gap: 8px; font-size: 0.85rem; color: var(--text-secondary); cursor: pointer;">
-              <input type="checkbox" id="chkInstantFeedback" checked />
-              Feedback imediato ao responder
-            </label>
+        <!-- ESTADO VAZIO (QUANDO NENHUM .MD FOI CARREGADO AINDA) -->
+        <section id="emptyStateView" class="empty-state-card" style="display: none;">
+          <div class="empty-state-icon">
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
           </div>
-
-          <div class="quiz-score-banner" id="quizScoreBanner">
-            <div>
-              <div style="font-size: 0.78rem; color: var(--text-muted); font-weight: 700;">DESEMPENHO SALVO</div>
-              <div class="score-value" id="quizScoreText">0 / 5 (0%)</div>
-            </div>
-            <div id="quizScoreMessage" style="font-size: 0.9rem; color: var(--text-secondary);"></div>
+          <h2>Nenhuma matéria carregada ainda</h2>
+          <p>
+            Sincronize automaticamente os arquivos <code>.md</code> da pasta <code>./estudos-banestes/</code> do seu repositório ou selecione os arquivos diretamente do seu computador.
+          </p>
+          <div class="empty-state-actions">
+            <button type="button" class="btn btn-primary" id="btnEmptySync">
+              Sincronizar ./estudos-banestes/
+            </button>
+            <button type="button" class="btn" id="btnEmptyLoadFiles">
+              Selecionar arquivos .md
+            </button>
+            <button type="button" class="btn" id="btnEmptyLoadFolder">
+              Selecionar pasta local
+            </button>
           </div>
-
-          <div id="quizQuestionsContainer"></div>
         </section>
 
-        <!-- ABA 4: ANOTAÇÕES PESSOAIS -->
-        <section id="panel-anotacoes" class="panel" role="tabpanel">
-          <div class="card">
-            <div class="card-header">
-              <h3 class="card-title" id="noteFormTitle">Nova Anotação de Estudo</h3>
-              <button type="button" class="btn" id="btnCancelEditNote" style="display: none;">
-                Cancelar edição
-              </button>
+        <!-- WORKSPACE DO DOCUMENTO ATIVO -->
+        <div id="activeDocContainer">
+          <section class="doc-header" id="docHeader"></section>
+
+          <!-- ABAS DESKTOP -->
+          <nav class="tabs-bar" role="tablist" aria-label="Seções de estudo">
+            <button type="button" class="tab-btn active" data-tab="diagnostico" role="tab" aria-selected="true">
+              1. Diagnóstico
+            </button>
+            <button type="button" class="tab-btn" data-tab="material" role="tab" aria-selected="false">
+              2. Material <span class="tab-count" id="materialCountBadge">0</span>
+            </button>
+            <button type="button" class="tab-btn" data-tab="simulado" role="tab" aria-selected="false">
+              3. Simulado FCC <span class="tab-count" id="simuladoCountBadge">0</span>
+            </button>
+            <button type="button" class="tab-btn" data-tab="anotacoes" role="tab" aria-selected="false">
+              4. Anotações <span class="tab-count" id="anotacoesCountBadge">0</span>
+            </button>
+            <button type="button" class="tab-btn" data-tab="gabarito" role="tab" aria-selected="false">
+              5. Gabarito
+            </button>
+          </nav>
+
+          <!-- ABA 1: DIAGNÓSTICO -->
+          <section id="panel-diagnostico" class="panel active" role="tabpanel"></section>
+
+          <!-- ABA 2: MATERIAL DE ESTUDO -->
+          <section id="panel-material" class="panel" role="tabpanel">
+            <div class="material-toolbar">
+              <input
+                type="search"
+                id="materialSearchInput"
+                class="field-input"
+                placeholder="Buscar conceitos, leis, limites ou pegadinhas neste material..."
+                aria-label="Filtrar conteúdo do material"
+              />
+            </div>
+            <div id="materialCardsContainer"></div>
+          </section>
+
+          <!-- ABA 3: SIMULADO INTERATIVO -->
+          <section id="panel-simulado" class="panel" role="tabpanel">
+            <div class="quiz-toolbar">
+              <div class="quiz-toolbar-left">
+                <button type="button" class="btn btn-primary" id="btnGradeQuiz">
+                  Corrigir Simulado
+                </button>
+                <button type="button" class="btn" id="btnClearQuiz">
+                  Refazer / Limpar
+                </button>
+                <span class="quiz-progress-pill" id="quizAnsweredPill">0 / 0 respondidas</span>
+              </div>
+              <label class="checkbox-label">
+                <input type="checkbox" id="chkInstantFeedback" checked />
+                <span>Feedback imediato ao marcar</span>
+              </label>
             </div>
 
-            <form id="noteForm" class="note-form-grid">
-              <input
-                type="text"
-                id="noteTitleInput"
-                class="field-input"
-                placeholder="Título curto (ex: Pegadinha limite global FGC)"
-                maxlength="120"
-              />
-              <select id="noteTopicSelect" class="field-select" aria-label="Tópico ou seção vinculada">
-                <option value="Geral da Matéria">Tópico: Geral da Matéria</option>
-              </select>
-              <textarea
-                id="noteBodyInput"
-                class="field-textarea"
-                placeholder="Escreva seu resumo, regra, exceção ou dúvida para revisar antes da prova..."
-                required
-              ></textarea>
-              <div style="display: flex; justify-content: flex-end; gap: 8px; flex-wrap: wrap;">
-                <button type="submit" class="btn btn-primary" id="btnSaveNote">
-                  Salvar Anotação
+            <div class="quiz-score-banner" id="quizScoreBanner">
+              <div>
+                <div class="score-label">DESEMPENHO NO SIMULADO</div>
+                <div class="score-value" id="quizScoreText">0 / 5 (0%)</div>
+              </div>
+              <div id="quizScoreMessage" class="score-msg"></div>
+            </div>
+
+            <div id="quizQuestionsContainer"></div>
+          </section>
+
+          <!-- ABA 4: ANOTAÇÕES PESSOAIS -->
+          <section id="panel-anotacoes" class="panel" role="tabpanel">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title" id="noteFormTitle">Nova Anotação de Estudo</h3>
+                <button type="button" class="btn btn-xs" id="btnCancelEditNote" style="display: none;">
+                  Cancelar edição
                 </button>
               </div>
-            </form>
-          </div>
 
-          <div class="notes-toolbar">
-            <input
-              type="search"
-              id="noteSearchInput"
-              class="field-input"
-              placeholder="Buscar nas suas anotações desta matéria..."
-              aria-label="Buscar anotações"
-            />
-            <select id="noteFilterScope" class="field-select" style="max-width: 240px;" aria-label="Filtrar escopo das anotações">
-              <option value="current">Apenas esta matéria</option>
-              <option value="all">Todas as matérias salvas</option>
-            </select>
-          </div>
+              <form id="noteForm" class="note-form-grid">
+                <div class="note-form-row">
+                  <input
+                    type="text"
+                    id="noteTitleInput"
+                    class="field-input"
+                    placeholder="Título curto (ex: Pegadinha limite global FGC)"
+                    maxlength="120"
+                  />
+                  <select id="noteTopicSelect" class="field-select" aria-label="Tópico vinculado">
+                    <option value="Geral da Matéria">Tópico: Geral da Matéria</option>
+                  </select>
+                </div>
+                <textarea
+                  id="noteBodyInput"
+                  class="field-textarea"
+                  placeholder="Escreva seu resumo, regra, exceção ou dúvida para revisar antes da prova..."
+                  required
+                ></textarea>
+                <div style="display: flex; justify-content: flex-end;">
+                  <button type="submit" class="btn btn-primary" id="btnSaveNote">
+                    Salvar Anotação
+                  </button>
+                </div>
+              </form>
+            </div>
 
-          <div id="notesListContainer"></div>
-        </section>
+            <div class="notes-toolbar">
+              <input
+                type="search"
+                id="noteSearchInput"
+                class="field-input"
+                placeholder="Buscar nas suas anotações..."
+                aria-label="Buscar anotações"
+              />
+              <select id="noteFilterScope" class="field-select" style="max-width: 240px;" aria-label="Escopo das anotações">
+                <option value="current">Apenas esta matéria</option>
+                <option value="all">Todas as matérias</option>
+              </select>
+            </div>
 
-        <!-- ABA 5: GABARITO COMENTADO -->
-        <section id="panel-gabarito" class="panel" role="tabpanel"></section>
+            <div id="notesListContainer"></div>
+          </section>
+
+          <!-- ABA 5: GABARITO COMENTADO -->
+          <section id="panel-gabarito" class="panel" role="tabpanel"></section>
+        </div>
       </main>
     </div>
 
-    <!-- NAVEGAÇÃO INFERIOR MOBILE -->
-    <nav class="bottom-nav" aria-label="Navegação rápida mobile">
+    <!-- NAVEGAÇÃO INFERIOR MOBILE (TODAS AS 5 ABAS) -->
+    <nav class="bottom-nav" aria-label="Navegação mobile">
       <button type="button" class="bottom-nav-btn active" data-tab="diagnostico">
-        <span>🎯</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
         <span>Foco</span>
       </button>
       <button type="button" class="bottom-nav-btn" data-tab="material">
-        <span>📖</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
         <span>Material</span>
       </button>
       <button type="button" class="bottom-nav-btn" data-tab="simulado">
-        <span>✍️</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
         <span>Simulado</span>
       </button>
       <button type="button" class="bottom-nav-btn" data-tab="anotacoes">
-        <span>📝</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
         <span>Notas</span>
+      </button>
+      <button type="button" class="bottom-nav-btn" data-tab="gabarito">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        <span>Gabarito</span>
       </button>
     </nav>
   </div>

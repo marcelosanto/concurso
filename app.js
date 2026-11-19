@@ -1,143 +1,28 @@
-const INITIAL_FGC_MARKDOWN = `# Fundo Garantidor de Créditos (FGC)
-**Data:** 17/11/2026 | **Eixo:** Conhecimentos Bancários
+/* =========================================================================
+   CONFIGURAÇÕES & ESTADO GLOBAL (SEM DADOS MOCADOS)
+   ========================================================================= */
+const STORAGE_KEY = "banestes_fcc_estudos_v2";
+const STUDY_FOLDER_PATH = "./estudos-banestes";
 
-## 1. DIAGNÓSTICO DO FOCO (Tema escolhido, Justificativa da escolha focada na FCC/Banestes e 4 Subtópicos)
-
--   **Tema Escolhido:** Fundo Garantidor de Créditos (FGC): Conceitos, Abrangência e Limites de Cobertura.
--   **Justificativa da Escolha focada na FCC/Banestes:** O Fundo Garantidor de Créditos (FGC) é um tema de altíssima relevância para concursos bancários, sendo recorrentemente cobrado pela Fundação Carlos Chagas (FCC). A FCC tem predileção por questões que abordam a legislação e a regulamentação do Sistema Financeiro Nacional, e o FGC se encaixa perfeitamente nesse perfil, exigindo do candidato o conhecimento de seus objetivos, quais créditos são garantidos (e quais não são), os limites de cobertura (por CPF/CNPJ e por instituição financeira) e as situações específicas de liquidação. Para um Técnico Bancário do Banestes, entender o FGC é crucial não apenas para a prova, mas também para o exercício da função, ao lidar com informações e dúvidas de clientes sobre a segurança de seus depósitos e investimentos.
--   **4 Subtópicos:**
-  1.  O que é o FGC e qual sua função no SFN.
-  2.  Créditos e instituições financeiras garantidos pelo FGC.
-  3.  Limites e regras de cobertura do FGC (por CPF/CNPJ e por instituição).
-  4.  Exceções à cobertura e situações especiais de liquidação.
-
-## 2. MATERIAL DE ESTUDO (1. Conceitos essenciais; 2. Regras, classificações e exceções; 3. Exemplos práticos curtos; 4. Alertas de pegadinhas típicas da FCC; 5. Mnemônicos ou regras de retenção rápida)
-
-### 1. Conceitos essenciais
-
--   **Fundo Garantidor de Créditos (FGC):** Associação civil, de direito privado e sem fins lucrativos, criada para proteger depositantes e investidores das instituições financeiras associadas, em caso de intervenção, liquidação ou falência. Sua principal função é contribuir para a estabilidade do Sistema Financeiro Nacional (SFN) e prevenir crises sistêmicas, restaurando a confiança dos clientes.
--   **Instituições Associadas:** Bancos múltiplos, bancos comerciais, bancos de investimento, bancos de desenvolvimento, caixas econômicas, sociedades de crédito, financiamento e investimento, sociedades de crédito imobiliário, companhias hipotecárias e cooperativas de crédito.
--   **Créditos Garantidos:** Depósitos à vista ou sacáveis mediante aviso prévio; depósitos de poupança; depósitos a prazo (CDB, RDB); letras de câmbio (LC); letras imobiliárias (LI); letras de crédito imobiliário (LCI); letras de crédito do agronegócio (LCA); operações compromissadas que têm como objeto títulos emitidos por empresa ligada; e depósitos mantidos em contas não movimentáveis por cheques e destinadas ao registro e controle do fluxo de recursos referentes a serviços de pagamento (ex: contas de pagamento).
--   **Créditos NÃO Garantidos:** Depósitos judiciais; depósitos de entidades de previdência complementar, fundos de pensão e regimes próprios de previdência social; quaisquer instrumentos financeiros que não sejam expressamente listados como garantidos; depósitos e quaisquer outros créditos de instituições financeiras (exceto os de cooperativas de crédito); e letras financeiras.
-
-### 2. Regras, classificações e exceções
-
--   **Limite de Cobertura:** R$ 250.000,00 por CPF/CNPJ, por instituição financeira ou conglomerado financeiro. Isso significa que, se um cliente tiver depósitos em diferentes tipos de contas (poupança, CDB) na mesma instituição, o valor total garantido é R$ 250.000,00.
--   **Limite Global:** Há um teto global de R$ 1.000.000,00 por CPF/CNPJ para o conjunto de depósitos e investimentos em instituições financeiras associadas, a cada período de 4 anos. Esse limite é restabelecido após o período de 4 anos, ou seja, se o cliente recebeu R$ 1 milhão do FGC em 2020, ele só terá direito a nova cobertura (até o limite de R$ 1 milhão) a partir de 2024.
--   **Contas Conjuntas:** O limite de R$ 250.000,00 é aplicado por CPF/CNPJ. Em contas conjuntas, o valor é dividido igualmente entre os titulares para fins de cálculo do limite. Ex: uma conta conjunta de R$ 300.000,00 com dois titulares terá R$ 150.000,00 atribuídos a cada CPF, estando ambos dentro do limite individual.
--   **Cooperativas de Crédito:** São instituições financeiras associadas ao FGC. No entanto, suas carteiras de crédito rural, industrial e de capital de giro são garantidas pelo FGCoop (Fundo Garantidor do Cooperativismo de Crédito), que possui regras e limites de cobertura semelhantes ao FGC, mas é uma entidade separada. O FGC garante os depósitos e investimentos das cooperativas de crédito (ex: conta corrente, poupança, RDB), enquanto o FGCoop garante os depósitos intercooperativos e outros instrumentos específicos do sistema cooperativo. **ATENÇÃO**: Para fins da prova, se não for especificado FGCoop, considere a regra geral do FGC para cooperativas.
--   **Títulos Públicos:** Não são garantidos pelo FGC, pois são títulos de dívida do governo e não de instituições financeiras.
-
-### 3. Exemplos práticos curtos
-
-1.  **Exemplo 1 (Limite por Instituição):** Maria possui R$ 150.000 em poupança e R$ 150.000 em CDB no Banco X. Se o Banco X liquidar, Maria receberá R$ 250.000 do FGC, pois o limite é por CPF/CNPJ por instituição.
-2.  **Exemplo 2 (Contas Conjuntas):** João e Pedro têm uma conta conjunta com R$ 400.000 no Banco Y. Em caso de liquidação, cada um terá direito a R$ 200.000 de cobertura do FGC (R$ 400.000 / 2), totalizando R$ 400.000. Ambos estão dentro do limite individual de R$ 250.000.
-3.  **Exemplo 3 (Limite Global):** Ana recebeu R$ 250.000 do FGC pela liquidação do Banco A em 2022 e R$ 250.000 pela liquidação do Banco B em 2023. Se o Banco C liquidar em 2024 e Ana tiver R$ 300.000 nele, ela receberá apenas R$ 250.000, pois o limite de R$ 1.000.000,00 em 4 anos ainda não foi atingido. Se ela tivesse recebido R$ 1.000.000,00 em 2022, não teria direito a nova cobertura até 2026.
-
-### 4. Alertas de pegadinhas típicas da FCC
-
--   **Confundir limite por instituição com limite por tipo de aplicação:** A FCC adora sugerir que o limite de R$ 250 mil é por poupança, por CDB, etc. Lembre-se: é por CPF/CNPJ, por instituição ou conglomerado.
--   **Ignorar o limite global de R$ 1 milhão em 4 anos:** Essa regra é mais recente e a FCC pode usá-la para testar a atualização do candidato.
--   **Incluir ou excluir créditos indevidamente:** Atenção à lista de créditos garantidos e não garantidos. Letras Financeiras e títulos públicos são exemplos clássicos de "NÃO GARANTIDOS". Depósitos judiciais também.
--   **Questões sobre cooperativas de crédito sem menção ao FGCoop:** A FCC pode testar o conhecimento do FGC para cooperativas, sem aprofundar no FGCoop. Na dúvida, siga a regra geral do FGC, a menos que o FGCoop seja explicitamente mencionado.
--   **Cálculo em contas conjuntas:** Lembre-se que o valor é dividido igualmente entre os titulares para fins de limite individual.
--   **Natureza jurídica do FGC:** É uma associação civil, de direito privado e sem fins lucrativos, NÃO é uma autarquia ou órgão governamental.
-
-### 5. Mnemônicos ou regras de retenção rápida
-
--   **"FGC: FOCA nos R$ 250 mil por CPF/CNPJ por BANCO, MÁXIMO R$ 1 milhão em 4 ANOS."**
-  -   **FOCA:** Função de proteger e estabilizar.
-  -   **R$ 250 mil:** Limite individual.
-  -   **CPF/CNPJ:** Quem é protegido.
-  -   **BANCO:** Por instituição/conglomerado.
-  -   **R$ 1 milhão em 4 ANOS:** Limite global temporário.
--   **"O que o FGC NÃO garante? LFT-PJ!"**
-  -   **L:** Letras Financeiras
-  -   **F:** Fundos (de investimento, previdência)
-  -   **T:** Títulos Públicos
-  -   **P:** Previdência (entidades de previdência complementar)
-  -   **J:** Judiciais (depósitos judiciais)
-  -   (E também "Créditos de Instituições Financeiras" - exceto cooperativas)
-
-## 3. SIMULADO FCC – 5 QUESTÕES
-
-**Questão 1**
-O Fundo Garantidor de Créditos (FGC) é uma entidade de suma importância para a estabilidade do Sistema Financeiro Nacional (SFN) brasileiro. Sobre sua natureza jurídica e principal objetivo, é correto afirmar que o FGC é:
-a) Uma autarquia federal vinculada ao Banco Central do Brasil, com o objetivo de fiscalizar as instituições financeiras.
-b) Uma sociedade de economia mista, com participação majoritária da União, criada para gerir fundos de investimento.
-c) Uma associação civil de direito privado e sem fins lucrativos, que visa proteger depositantes e investidores, contribuindo para a estabilidade do SFN.
-d) Um órgão do Ministério da Fazenda, responsável pela regulamentação do mercado de capitais.
-e) Uma empresa pública federal, cujo propósito é realizar operações de crédito para o governo.
-
-**Questão 2**
-Um cliente possui os seguintes investimentos em um mesmo banco, que veio a ser liquidado pelo Banco Central do Brasil:
-I. Depósito em caderneta de poupança no valor de R$ 100.000,00.
-II. Certificado de Depósito Bancário (CDB) no valor de R$ 180.000,00.
-III. Letra de Crédito Imobiliário (LCI) no valor de R$ 70.000,00.
-IV. Letra Financeira (LF) no valor de R$ 50.000,00.
-De acordo com as regras de cobertura do Fundo Garantidor de Créditos (FGC), o valor máximo que este cliente terá direito a receber do FGC é de:
-a) R$ 250.000,00.
-b) R$ 350.000,00.
-c) R$ 380.000,00.
-d) R$ 400.000,00.
-e) R$ 500.000,00.
-
-**Questão 3**
-Sobre os limites de cobertura do Fundo Garantidor de Créditos (FGC), considere as afirmativas a seguir:
-I. A garantia é limitada a R$ 250.000,00 por CPF ou CNPJ, por instituição ou conglomerado financeiro.
-II. Existe um limite global de R$ 1.000.000,00 por CPF ou CNPJ para o conjunto de depósitos e investimentos em instituições financeiras associadas, a cada período de 4 anos.
-III. Em contas conjuntas, o limite de R$ 250.000,00 é aplicado individualmente a cada titular, independentemente do valor total da conta.
-É correto o que se afirma em:
-a) I, apenas.
-b) II, apenas.
-c) I e II, apenas.
-d) II e III, apenas.
-e) I, II e III.
-
-**Questão 4**
-Qual das seguintes opções NÃO representa um tipo de crédito ou investimento garantido pelo Fundo Garantidor de Créditos (FGC)?
-a) Depósitos de poupança.
-b) Certificados de Depósito Bancário (CDB).
-c) Letras de Crédito do Agronegócio (LCA).
-d) Letras Financeiras (LF).
-e) Depósitos à vista.
-
-**Questão 5**
-Em 2021, um investidor recebeu a cobertura máxima do FGC de R$ 1.000.000,00 devido à liquidação de duas instituições financeiras. Em 2023, esse mesmo investidor possuía R$ 300.000,00 em um CDB de outro banco que também foi liquidado. De acordo com as regras do FGC, qual o valor máximo que o investidor poderá receber em 2023 referente a essa nova liquidação?
-a) R$ 0,00.
-b) R$ 50.000,00.
-c) R$ 250.000,00.
-d) R$ 300.000,00.
-e) R$ 1.000.000,00.
-
----
-
-**Gabarito Comentado**
-
-**Questão 1:**
--   **Alternativa Correta: c)** O FGC é uma associação civil de direito privado e sem fins lucrativos, que atua para proteger os créditos de depositantes e investidores, contribuindo para a estabilidade do SFN. As demais alternativas descrevem naturezas jurídicas e funções que não correspondem ao FGC.
-
-**Questão 2:**
--   **Alternativa Correta: a)**
-  -   Os créditos garantidos são: Depósito em caderneta de poupança (R$ 100.000,00), Certificado de Depósito Bancário (CDB) (R$ 180.000,00) e Letra de Crédito Imobiliário (LCI) (R$ 70.000,00). A Letra Financeira (LF) NÃO é garantida pelo FGC.
-  -   A soma dos créditos garantidos é R$ 100.000,00 + R$ 180.000,00 + R$ 70.000,00 = R$ 350.000,00.
-  -   No entanto, o limite de cobertura do FGC é de R$ 250.000,00 por CPF/CNPJ, por instituição financeira ou conglomerado. Assim, apesar de ter R$ 350.000,00 em créditos garantidos, o cliente receberá no máximo R$ 250.000,00.
-
-**Questão 3:**
--   **Alternativa Correta: c)**
-  -   I. Correta. A garantia é de R$ 250.000,00 por CPF ou CNPJ, por instituição ou conglomerado financeiro.
-  -   II. Correta. Há um limite global de R$ 1.000.000,00 por CPF ou CNPJ para o conjunto de depósitos e investimentos em instituições financeiras associadas, a cada período de 4 anos.
-  -   III. Incorreta. Em contas conjuntas, o valor total é dividido igualmente entre os titulares para fins de cálculo do limite individual de R$ 250.000,00, e não aplicado individualmente independentemente do valor total.
-  -   Portanto, apenas I e II estão corretas.
-
-**Questão 4:**
--   **Alternativa Correta: d)** As Letras Financeiras (LF) não são garantidas pelo FGC. Depósitos de poupança, CDB, LCA e depósitos à vista são todos garantidos pelo FGC.
-
-**Questão 5:**
--   **Alternativa Correta: a)** O investidor já recebeu a cobertura máxima global de R$ 1.000.000,00 em 2021. O limite global é restabelecido a cada 4 anos. Como a nova liquidação ocorreu em 2023, ou seja, antes do período de 4 anos se completar (que seria em 2025), o investidor não terá direito a receber nenhum valor adicional do FGC. O valor a receber é R$ 0,00.`;
+let state = {
+  theme: "light",
+  focusMode: false,
+  activeDocId: null,
+  activeTab: "diagnostico",
+  instantFeedback: true,
+  docSearch: "",
+  materialSearch: "",
+  noteSearch: "",
+  noteScope: "current",
+  editingNoteId: null,
+  githubRepoSlug: "",
+  docs: [],
+  progress: {},
+  notes: []
+};
 
 /* =========================================================================
-   UTILITÁRIOS DE FORMATAÇÃO, PARSER MARKDOWN & NOTIFICAÇÕES
+   UTILITÁRIOS DE SEGURANÇA, MARKDOWN & NOTIFICAÇÕES
    ========================================================================= */
 function escapeHtml(str) {
   return String(str || "")
@@ -149,206 +34,200 @@ function escapeHtml(str) {
 }
 
 function renderInlineMarkdown(text) {
-  let html = escapeHtml(String(text || ""));
-  html = html.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
-  html = html.replace(/\*([^*]+)\*/g, "<em>$1</em>");
+  let html = escapeHtml(text);
   html = html.replace(/`([^`]+)`/g, "<code>$1</code>");
+  html = html.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
+  html = html.replace(/__([^_]+)__/g, "<strong>$1</strong>");
+  html = html.replace(/(^|[\s(])\*([^*]+)\*(?=[\s).,;:!?]|$)/g, "$1<em>$2</em>");
+  html = html.replace(/(^|[\s(])_([^_]+)_(?=[\s).,;:!?]|$)/g, "$1<em>$2</em>");
   return html;
 }
 
-function markdownBlockToHtml(blockText) {
-  const lines = String(blockText || "").split(/\r?\n/);
-  let html = "";
+function renderBlockMarkdown(mdText) {
+  const lines = String(mdText || "").replace(/\r\n/g, "\n").split("\n");
+  const out = [];
   let inUl = false;
   let inOl = false;
 
   const closeLists = () => {
-    if (inUl) { html += "</ul>"; inUl = false; }
-    if (inOl) { html += "</ol>"; inOl = false; }
+    if (inUl) {
+      out.push("</ul>");
+      inUl = false;
+    }
+    if (inOl) {
+      out.push("</ol>");
+      inOl = false;
+    }
   };
 
   for (const rawLine of lines) {
-    const line = rawLine.trim();
-    if (!line) {
+    const trimmed = rawLine.trim();
+
+    if (!trimmed) {
       closeLists();
       continue;
     }
-    if (/^---+$/.test(line)) {
+
+    if (/^(-{3,}|\*{3,}|_{3,})$/.test(trimmed)) {
       closeLists();
-      html += "<hr />";
+      out.push("<hr />");
       continue;
     }
-    if (line.startsWith(">")) {
+
+    const headingMatch = trimmed.match(/^(#{3,5})\s+(.+)$/);
+    if (headingMatch) {
       closeLists();
-      html += `<blockquote>${renderInlineMarkdown(line.replace(/^>\s?/, ""))}</blockquote>`;
+      const level = Math.min(5, headingMatch[1].length + 1);
+      out.push(`<h${level}>${renderInlineMarkdown(headingMatch[2])}</h${level}>`);
       continue;
     }
-    const ulMatch = line.match(/^[-*+]\s+(.*)$/);
+
+    if (trimmed.startsWith(">")) {
+      closeLists();
+      out.push(`<blockquote>${renderInlineMarkdown(trimmed.replace(/^>\s*/, ""))}</blockquote>`);
+      continue;
+    }
+
+    const ulMatch = trimmed.match(/^[*+-]\s+(.+)$/);
     if (ulMatch) {
-      if (inOl) { html += "</ol>"; inOl = false; }
-      if (!inUl) { html += "<ul>"; inUl = true; }
-      html += `<li>${renderInlineMarkdown(ulMatch[1])}</li>`;
+      if (inOl) {
+        out.push("</ol>");
+        inOl = false;
+      }
+      if (!inUl) {
+        out.push("<ul>");
+        inUl = true;
+      }
+      out.push(`<li>${renderInlineMarkdown(ulMatch[1])}</li>`);
       continue;
     }
-    const olMatch = line.match(/^\d+\.\s+(.*)$/);
+
+    const olMatch = trimmed.match(/^\d+[.)]\s+(.+)$/);
     if (olMatch) {
-      if (inUl) { html += "</ul>"; inUl = false; }
-      if (!inOl) { html += "<ol>"; inOl = true; }
-      html += `<li>${renderInlineMarkdown(olMatch[1])}</li>`;
+      if (inUl) {
+        out.push("</ul>");
+        inUl = false;
+      }
+      if (!inOl) {
+        out.push("<ol>");
+        inOl = true;
+      }
+      out.push(`<li>${renderInlineMarkdown(olMatch[1])}</li>`);
       continue;
     }
+
     closeLists();
-    html += `<p>${renderInlineMarkdown(line)}</p>`;
+    out.push(`<p>${renderInlineMarkdown(trimmed)}</p>`);
   }
 
   closeLists();
-  return html;
+  return out.join("\n");
 }
 
-function splitTopSections(md) {
-  const lines = String(md || "").split(/\r?\n/);
+function showToast(message, type = "info") {
+  const container = document.getElementById("toastContainer");
+  if (!container) return;
+  const toast = document.createElement("div");
+  toast.className = `toast ${type}`;
+  toast.textContent = message;
+  container.appendChild(toast);
+  setTimeout(() => {
+    toast.style.opacity = "0";
+    toast.style.transform = "translateY(6px)";
+    setTimeout(() => toast.remove(), 220);
+  }, 3400);
+}
+
+/* =========================================================================
+   PARSER ROBUSTO PARA OS ARQUIVOS .MD DE ESTUDO (DIAGNÓSTICO, MATERIAL,
+   SIMULADO FCC E GABARITO COMENTADO)
+   ========================================================================= */
+function parseStudyMarkdown(markdown, fileName = "") {
+  const lines = String(markdown || "").replace(/\r\n/g, "\n").split("\n");
+
   let title = "";
-  let metaLine = "";
-  const sections = [];
-  let current = null;
-
-  for (const line of lines) {
-    const h1 = line.match(/^#\s+(.+)$/);
-    if (h1 && !title) {
-      title = h1[1].trim();
-      continue;
-    }
-    if (!title && !metaLine && line.trim()) {
-      metaLine = line.trim();
-      continue;
-    }
-    if (title && !metaLine && /^\*\*Data:\*\*/i.test(line.trim())) {
-      metaLine = line.trim();
-      continue;
-    }
-    const h2 = line.match(/^##\s+(.+)$/);
-    if (h2) {
-      if (current) sections.push(current);
-      current = { heading: h2[1].trim(), lines: [] };
-      continue;
-    }
-    if (current) {
-      current.lines.push(line);
-    }
-  }
-  if (current) sections.push(current);
-
-  return {
-    title: title || "Material de Estudo",
-    metaLine,
-    sections
-  };
-}
-
-function parseStudyMarkdown(markdown, fileName = "material.md") {
-  const top = splitTopSections(markdown);
   let dateLabel = "";
   let axisLabel = "";
 
-  if (top.metaLine) {
-    const dateMatch = top.metaLine.match(/\*\*Data:\*\*\s*([^|]+)/i);
-    const axisMatch = top.metaLine.match(/\*\*Eixo:\*\*\s*([^|]+)/i);
-    dateLabel = dateMatch ? dateMatch[1].trim() : "";
-    axisLabel = axisMatch ? axisMatch[1].trim() : "";
-  }
+  const sectionBuckets = {
+    diagnostico: [],
+    material: [],
+    simulado: [],
+    gabarito: []
+  };
 
-  const diagnostic = { tema: "", justificativa: "", subtopicos: [] };
-  const materialSections = [];
-  let simuladoRaw = "";
-  let gabaritoRaw = "";
+  let currentSection = null;
 
-  for (const sec of top.sections) {
-    const hLower = sec.heading.toLowerCase();
-    const body = sec.lines.join("\n").trim();
+  for (const line of lines) {
+    const trimmed = line.trim();
 
-    if (hLower.includes("diagnóstico") || hLower.includes("diagnostico") || hLower.startsWith("1.")) {
-      const temaMatch = body.match(/\*\*Tema Escolhido:\*\*\s*([^\n]+)/i);
-      const justMatch = body.match(/\*\*Justificativa[^*]*:\*\*\s*([^\n]+)/i);
-      diagnostic.tema = temaMatch ? temaMatch[1].trim() : "";
-      diagnostic.justificativa = justMatch ? justMatch[1].trim() : "";
+    // Título H1
+    if (!title && /^#\s+(.+)$/.test(trimmed)) {
+      title = trimmed.replace(/^#\s+/, "").trim();
+      continue;
+    }
 
-      const subLines = body.split(/\r?\n/).filter(l => /^\s*\d+\.\s+/.test(l));
-      diagnostic.subtopicos = subLines.map(l => l.replace(/^\s*\d+\.\s+/, "").trim());
-    } else if (hLower.includes("material") || hLower.startsWith("2.")) {
-      const parts = body.split(/\n###\s+/);
-      parts.forEach((part, idx) => {
-        if (!part.trim()) return;
-        if (idx === 0 && !part.trim().startsWith("###")) {
-          materialSections.push({
-            title: "Visão Geral do Material",
-            html: markdownBlockToHtml(part)
-          });
-        } else {
-          const clean = part.replace(/^###\s+/, "");
-          const nlIdx = clean.indexOf("\n");
-          const sTitle = nlIdx >= 0 ? clean.slice(0, nlIdx).trim() : clean.trim();
-          const sBody = nlIdx >= 0 ? clean.slice(nlIdx + 1) : "";
-          materialSections.push({
-            title: sTitle,
-            html: markdownBlockToHtml(sBody)
-          });
-        }
-      });
-    } else if (hLower.includes("gabarito")) {
-      gabaritoRaw = body;
-    } else if (hLower.includes("simulado") || hLower.includes("questões") || hLower.includes("questoes") || hLower.startsWith("3.")) {
-      simuladoRaw = body;
+    // Metadados (Data / Eixo) antes da Seção 1
+    if (!currentSection && (/\*\*Data:\*\*/i.test(trimmed) || /\*\*Eixo:\*\*/i.test(trimmed))) {
+      const dateMatch = trimmed.match(/\*\*Data:\*\*\s*([^|]+)/i);
+      const axisMatch = trimmed.match(/\*\*Eixo:\*\*\s*([^|]+)/i);
+      if (dateMatch) dateLabel = dateMatch[1].trim();
+      if (axisMatch) axisLabel = axisMatch[1].trim();
+      continue;
+    }
+
+    // Detecção das grandes seções
+    if (/^##\s*1\.\s*DIAGN[ÓO]STICO/i.test(trimmed) || /^##\s*DIAGN[ÓO]STICO/i.test(trimmed)) {
+      currentSection = "diagnostico";
+      continue;
+    }
+    if (/^##\s*2\.\s*MATERIAL/i.test(trimmed) || /^##\s*MATERIAL DE ESTUDO/i.test(trimmed)) {
+      currentSection = "material";
+      continue;
+    }
+    if (/^##\s*3\.\s*SIMULADO/i.test(trimmed) || /^##\s*SIMULADO/i.test(trimmed)) {
+      currentSection = "simulado";
+      continue;
+    }
+    if (
+      /^#{2,4}\s*Gabarito(?:\s+Comentado)?\s*:?\s*$/i.test(trimmed) ||
+      /^\*\*Gabarito(?:\s+Comentado)?\s*:?\*\*\s*:?\s*$/i.test(trimmed)
+    ) {
+      currentSection = "gabarito";
+      continue;
+    }
+
+    if (currentSection) {
+      sectionBuckets[currentSection].push(line);
     }
   }
 
-  const gabaritoList = [];
-  const gabChunks = gabaritoRaw.split(/(?=\*\*Questão\s+\d+\*\*)/i).filter(c => c.trim());
-  for (const chunk of gabChunks) {
-    const numMatch = chunk.match(/\*\*Questão\s+(\d+)\*\*/i);
-    const qNum = numMatch ? numMatch[1] : String(gabaritoList.length + 1);
-    const keyMatch = chunk.match(/Alternativa Correta:\s*\*\*([a-e])\)\*\*/i);
-    const correctLetter = keyMatch ? keyMatch[1].toLowerCase() : "";
-    const rest = chunk.replace(/^\*\*Questão\s+\d+\*\*:?\s*/i, "");
-    gabaritoList.push({
-      qNum,
-      correctLetter,
-      commentHtml: markdownBlockToHtml(rest)
-    });
+  if (!title) {
+    title = fileName
+      .replace(/\.md$/i, "")
+      .replace(/^\d{4}-\d{2}-\d{2}-/, "")
+      .replace(/[-_]+/g, " ")
+      .replace(/\b\w/g, c => c.toUpperCase());
   }
 
-  const questions = [];
-  const qChunks = simuladoRaw.split(/(?=\*\*Questão\s+\d+\*\*)/i).filter(c => c.trim());
-  qChunks.forEach((chunk, idx) => {
-    const numMatch = chunk.match(/\*\*Questão\s+(\d+)\*\*/i);
-    const number = numMatch ? numMatch[1] : String(idx + 1);
-    const qId = `q${number}`;
-    const lines = chunk.replace(/^\*\*Questão\s+\d+\*\*\s*/i, "").split(/\r?\n/);
+  // 1. Parse Diagnóstico
+  const diagnostic = parseDiagnosticLines(sectionBuckets.diagnostico);
 
-    const stmtLines = [];
-    const options = [];
-    for (const l of lines) {
-      const optMatch = l.trim().match(/^([a-e])\)\s+(.+)$/i);
-      if (optMatch) {
-        options.push({ letter: optMatch[1].toLowerCase(), text: optMatch[2].trim() });
-      } else if (options.length === 0 && l.trim() && !/^---+$/.test(l.trim())) {
-        stmtLines.push(l.trim());
-      }
-    }
+  // 2. Parse Material de Estudo
+  const materialSections = parseMaterialLines(sectionBuckets.material);
 
-    const gabMatch = gabaritoList.find(g => g.qNum === number);
-    questions.push({
-      id: qId,
-      number,
-      statement: stmtLines.join(" "),
-      options,
-      correctLetter: gabMatch ? gabMatch.correctLetter : "",
-      commentHtml: gabMatch ? gabMatch.commentHtml : ""
-    });
+  // 3. Parse Gabarito Comentado (antes para mapear respostas às questões)
+  const gabaritoList = parseGabaritoLines(sectionBuckets.gabarito);
+  const gabaritoByNum = new Map();
+  gabaritoList.forEach(item => {
+    if (item.qNum) gabaritoByNum.set(String(item.qNum), item);
   });
 
+  // 4. Parse Questões do Simulado
+  const questions = parseSimuladoLines(sectionBuckets.simulado, gabaritoByNum, gabaritoList);
+
   return {
-    title: top.title,
-    fileName,
+    title,
     dateLabel,
     axisLabel,
     diagnostic,
@@ -358,49 +237,215 @@ function parseStudyMarkdown(markdown, fileName = "material.md") {
   };
 }
 
-function showToast(message, type = "info") {
-  const container = document.getElementById("toastContainer");
-  const toast = document.createElement("div");
-  toast.className = `toast ${type}`;
-  toast.textContent = message;
-  container.appendChild(toast);
-  setTimeout(() => {
-    toast.style.opacity = "0";
-    toast.style.transition = "opacity 0.25s ease";
-    setTimeout(() => toast.remove(), 260);
-  }, 3000);
+function parseDiagnosticLines(lines) {
+  let tema = "";
+  let justificativa = "";
+  const subtopicos = [];
+  const extraLines = [];
+  let inSubtopicos = false;
+
+  for (const raw of lines) {
+    const trimmed = raw.trim();
+    if (!trimmed) continue;
+
+    const temaMatch = trimmed.match(/^(?:[-*]\s*)?\*\*Tema\s+escolhido\s*:?\*\*\s*:?\s*(.+)$/i);
+    if (temaMatch) {
+      tema = temaMatch[1].trim();
+      inSubtopicos = false;
+      continue;
+    }
+
+    const justMatch = trimmed.match(/^(?:[-*]\s*)?\*\*Justificativa[^*]*\*\*\s*:?\s*(.+)$/i);
+    if (justMatch) {
+      justificativa = justMatch[1].trim();
+      inSubtopicos = false;
+      continue;
+    }
+
+    if (/^(?:[-*]\s*)?\*\*4\s*Subt[óo]picos\s*:?\*\*/i.test(trimmed) || /^4\s*Subt[óo]picos\s*:?/i.test(trimmed)) {
+      inSubtopicos = true;
+      continue;
+    }
+
+    if (inSubtopicos) {
+      const itemMatch = trimmed.match(/^(?:\d+[.)]|[-*])\s+(.+)$/);
+      if (itemMatch) {
+        subtopicos.push(itemMatch[1].trim());
+        continue;
+      }
+    }
+
+    extraLines.push(raw);
+  }
+
+  return {
+    tema,
+    justificativa,
+    subtopicos,
+    extraHtml: extraLines.length > 0 ? renderBlockMarkdown(extraLines.join("\n")) : ""
+  };
+}
+
+function parseMaterialLines(lines) {
+  const sections = [];
+  let current = null;
+
+  const pushCurrent = () => {
+    if (current) {
+      current.html = renderBlockMarkdown(current.rawLines.join("\n"));
+      sections.push(current);
+    }
+  };
+
+  for (const raw of lines) {
+    const trimmed = raw.trim();
+
+    // Formato A: ### 1. Conceitos essenciais
+    const h3Match = trimmed.match(/^###\s+(.+)$/);
+    if (h3Match) {
+      pushCurrent();
+      current = {
+        title: h3Match[1].replace(/:$/, "").trim(),
+        rawLines: []
+      };
+      continue;
+    }
+
+    // Formato B: * **1. Conceitos essenciais:** (bullet raiz em negrito)
+    const rootBulletSection = raw.match(/^[*+-]\s+\*\*(\d+\.\s*[^*]+?)\*\*\s*:?\s*(.*)$/);
+    if (rootBulletSection) {
+      pushCurrent();
+      current = {
+        title: rootBulletSection[1].replace(/:$/, "").trim(),
+        rawLines: rootBulletSection[2] ? [rootBulletSection[2]] : []
+      };
+      continue;
+    }
+
+    if (!current) {
+      if (!trimmed) continue;
+      current = {
+        title: "Visão Geral do Conteúdo",
+        rawLines: []
+      };
+    }
+
+    // Remove indentação extra de sub-listas quando veio de Formato B
+    current.rawLines.push(raw.replace(/^ {2,4}/, ""));
+  }
+
+  pushCurrent();
+  return sections;
+}
+
+function parseGabaritoLines(lines) {
+  const items = [];
+  let current = null;
+
+  const finalizeCurrent = () => {
+    if (!current) return;
+    const fullText = `${current.headerExtra}\n${current.rawLines.join("\n")}`;
+    const ansMatch =
+      fullText.match(/(?:Alternativa\s+Correta|Gabarito|Resposta(?:\s+Correta)?)\s*:?\s*\**\s*\(?([a-eA-E])\)?/i) ||
+      fullText.match(/(?:Alternativa|Letra)\s*\**\s*\(?([a-eA-E])\)?\b/i);
+
+    current.correctLetter = ansMatch ? ansMatch[1].toLowerCase() : "";
+    current.commentHtml = renderBlockMarkdown(current.rawLines.join("\n"));
+    items.push(current);
+  };
+
+  for (const raw of lines) {
+    const trimmed = raw.trim();
+    if (!trimmed || /^(-{3,}|\*{3,}|_{3,})$/.test(trimmed)) continue;
+
+    // Cabeçalho da questão no gabarito: **Questão 1:** ou **Questão 1 - Resposta: D** ou ### Questão 1
+    const qHeaderMatch = trimmed.match(
+      /^(?:#{2,4}\s*)?(?:\*\*)?Quest[ãa]o\s*(\d+)(?:\s*[-–:.]\s*(.+?))?(?:\*\*)?\s*:?\s*$/i
+    );
+
+    if (qHeaderMatch) {
+      finalizeCurrent();
+      current = {
+        qNum: String(Number(qHeaderMatch[1])),
+        headerExtra: (qHeaderMatch[2] || "").replace(/\*\*/g, "").trim(),
+        rawLines: []
+      };
+      continue;
+    }
+
+    if (current) {
+      current.rawLines.push(raw);
+    }
+  }
+
+  finalizeCurrent();
+  return items;
+}
+
+function parseSimuladoLines(lines, gabaritoByNum, gabaritoList) {
+  const questions = [];
+  let current = null;
+
+  const finalizeQuestion = () => {
+    if (!current) return;
+    const qIndex = questions.length;
+    const gab = gabaritoByNum.get(String(current.number)) || gabaritoList[qIndex] || null;
+    current.correctLetter = gab ? gab.correctLetter : "";
+    current.commentHtml = gab ? gab.commentHtml : "";
+    current.statementHtml = renderBlockMarkdown(current.statementLines.join("\n"));
+    questions.push(current);
+  };
+
+  for (const raw of lines) {
+    const trimmed = raw.trim();
+    if (!trimmed || /^(-{3,}|\*{3,}|_{3,})$/.test(trimmed)) continue;
+
+    // Início de questão: **Questão 1**, **Questão 1:**, ### Questão 1
+    const qStartMatch = trimmed.match(
+      /^(?:#{2,4}\s*)?(?:\*\*)?Quest[ãa]o\s*(\d+)(?:\*\*)?\s*:?\s*(.*)$/i
+    );
+
+    if (qStartMatch) {
+      finalizeQuestion();
+      const numStr = String(Number(qStartMatch[1]));
+      const inlineRest = (qStartMatch[2] || "").replace(/^\*\*\s*/, "").trim();
+      current = {
+        id: `q-${numStr}-${questions.length + 1}`,
+        number: numStr,
+        statementLines: inlineRest ? [inlineRest] : [],
+        options: []
+      };
+      continue;
+    }
+
+    if (!current) continue;
+
+    // Alternativa a) .. e) ou A) .. E)
+    const optMatch = trimmed.match(/^(?:[-*]\s*)?(?:\*\*)?\(?([a-eA-E])\)?[.)]\s*(?:\*\*)?\s*(.+)$/);
+    if (optMatch) {
+      current.options.push({
+        letter: optMatch[1].toLowerCase(),
+        text: optMatch[2].trim()
+      });
+      continue;
+    }
+
+    // Se já começou as alternativas, continua o texto da última alternativa; senão faz parte do enunciado
+    if (current.options.length > 0) {
+      const lastOpt = current.options[current.options.length - 1];
+      lastOpt.text += ` ${trimmed}`;
+    } else {
+      current.statementLines.push(trimmed);
+    }
+  }
+
+  finalizeQuestion();
+  return questions;
 }
 
 /* =========================================================================
-   ESTADO DA APLICAÇÃO & PERSISTÊNCIA (LOCALSTORAGE + BACKUP JSON)
+   PERSISTÊNCIA NO LOCALSTORAGE
    ========================================================================= */
-const STORAGE_KEY = "banestes_fcc_estudos_v2";
-const STUDY_FOLDER_PATH = "./estudos-banestes";
-
-const DEFAULT_DOCS = [
-  {
-    id: "doc-fgc-banestes",
-    fileName: "fgc-conhecimentos-bancarios.md",
-    source: "builtin",
-    markdown: INITIAL_FGC_MARKDOWN,
-    addedAt: "2026-11-17"
-  }
-];
-
-let state = {
-  theme: "light",
-  focusMode: false,
-  activeDocId: "doc-fgc-banestes",
-  activeTab: "diagnostico",
-  instantFeedback: true,
-  noteSearch: "",
-  noteScope: "current",
-  editingNoteId: null,
-  docs: DEFAULT_DOCS,
-  progress: {},
-  notes: []
-};
-
 function saveState() {
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify({
@@ -409,34 +454,34 @@ function saveState() {
       activeDocId: state.activeDocId,
       activeTab: state.activeTab,
       instantFeedback: state.instantFeedback,
-      noteSearch: state.noteSearch,
       noteScope: state.noteScope,
+      githubRepoSlug: state.githubRepoSlug,
       docs: state.docs,
       progress: state.progress,
       notes: state.notes
     }));
   } catch (err) {
-    showToast("Aviso: não foi possível salvar no localStorage.", "error");
+    showToast("Aviso: não foi possível salvar no navegador.", "error");
   }
 }
 
 function loadState() {
   try {
-    const raw = localStorage.getItem(STORAGE_KEY) || localStorage.getItem("banestes_fcc_estudos_v1");
+    const raw = localStorage.getItem(STORAGE_KEY);
     if (!raw) return;
     const parsed = JSON.parse(raw);
-    if (parsed && Array.isArray(parsed.docs) && parsed.docs.length > 0) {
-      state.theme = parsed.theme === "dark" ? "dark" : "light";
-      state.focusMode = Boolean(parsed.focusMode);
-      state.activeDocId = parsed.activeDocId || parsed.docs[0].id;
-      state.activeTab = parsed.activeTab || "diagnostico";
-      state.instantFeedback = parsed.instantFeedback !== undefined ? Boolean(parsed.instantFeedback) : true;
-      state.noteSearch = parsed.noteSearch || "";
-      state.noteScope = parsed.noteScope === "all" ? "all" : "current";
-      state.docs = parsed.docs;
-      state.progress = parsed.progress || {};
-      state.notes = Array.isArray(parsed.notes) ? parsed.notes : [];
-    }
+    if (!parsed || typeof parsed !== "object") return;
+
+    state.theme = parsed.theme === "dark" ? "dark" : "light";
+    state.focusMode = Boolean(parsed.focusMode);
+    state.activeTab = parsed.activeTab || "diagnostico";
+    state.instantFeedback = parsed.instantFeedback !== undefined ? Boolean(parsed.instantFeedback) : true;
+    state.noteScope = parsed.noteScope === "all" ? "all" : "current";
+    state.githubRepoSlug = typeof parsed.githubRepoSlug === "string" ? parsed.githubRepoSlug : "";
+    state.docs = Array.isArray(parsed.docs) ? parsed.docs : [];
+    state.activeDocId = parsed.activeDocId || (state.docs[0] ? state.docs[0].id : null);
+    state.progress = parsed.progress && typeof parsed.progress === "object" ? parsed.progress : {};
+    state.notes = Array.isArray(parsed.notes) ? parsed.notes : [];
   } catch (err) {
     console.warn("Falha ao carregar estado salvo:", err);
   }
@@ -460,6 +505,7 @@ function getDocProgress(docId) {
 }
 
 function getActiveDoc() {
+  if (!state.docs.length) return null;
   return state.docs.find(d => d.id === state.activeDocId) || state.docs[0];
 }
 
@@ -469,6 +515,7 @@ function isBlockReviewed(docId, blockId) {
 
 window.toggleReview = function(blockId) {
   const doc = getActiveDoc();
+  if (!doc) return;
   const prog = getDocProgress(doc.id);
   const idx = prog.reviewedIds.indexOf(blockId);
   if (idx >= 0) {
@@ -480,6 +527,9 @@ window.toggleReview = function(blockId) {
   renderAll();
 };
 
+/* =========================================================================
+   RENDERIZAÇÃO DOS PAINÉIS DE ESTUDO
+   ========================================================================= */
 function renderDiagnosticoPanel(docId, parsed) {
   const panel = document.getElementById("panel-diagnostico");
   const diag = parsed.diagnostic;
@@ -497,33 +547,53 @@ function renderDiagnosticoPanel(docId, parsed) {
       <div class="md-content">
         ${diag.tema ? `<p><strong>Tema Escolhido:</strong> ${renderInlineMarkdown(diag.tema)}</p>` : ""}
         ${diag.justificativa ? `<p><strong>Justificativa da Escolha:</strong> ${renderInlineMarkdown(diag.justificativa)}</p>` : ""}
+        ${!diag.tema && !diag.justificativa && diag.extraHtml ? diag.extraHtml : ""}
       </div>
     </div>
 
-    <div class="card">
-      <div class="card-header">
-        <h3 class="card-title">4 Subtópicos Prioritários</h3>
+    ${diag.subtopicos.length > 0 ? `
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Subtópicos Prioritários</h3>
+        </div>
+        <div class="subtopics-grid">
+          ${diag.subtopicos.map((st, idx) => `
+            <div class="subtopic-pill">
+              <span class="subtopic-num">0${idx + 1}.</span>
+              ${renderInlineMarkdown(st)}
+            </div>
+          `).join("")}
+        </div>
       </div>
-      <div class="subtopics-grid">
-        ${diag.subtopicos.map((st, idx) => `
-          <div class="subtopic-pill">
-            <span style="color: var(--text-accent); font-weight: 700; margin-right: 6px;">0${idx + 1}.</span>
-            ${renderInlineMarkdown(st)}
-          </div>
-        `).join("")}
-      </div>
-    </div>
+    ` : ""}
   `;
 }
 
 function renderMaterialPanel(docId, parsed) {
-  const panel = document.getElementById("panel-material");
+  const container = document.getElementById("materialCardsContainer");
+  const query = state.materialSearch.trim().toLowerCase();
+
   if (parsed.materialSections.length === 0) {
-    panel.innerHTML = `<div class="card"><p>Nenhuma seção de material encontrada neste arquivo .md.</p></div>`;
+    container.innerHTML = `<div class="card"><p>Nenhuma seção de material encontrada neste arquivo <code>.md</code>.</p></div>`;
     return;
   }
 
-  panel.innerHTML = parsed.materialSections.map((sec, idx) => {
+  const filtered = parsed.materialSections
+    .map((sec, idx) => ({ sec, idx }))
+    .filter(({ sec }) => {
+      if (!query) return true;
+      return (
+        sec.title.toLowerCase().includes(query) ||
+        sec.rawLines.join(" ").toLowerCase().includes(query)
+      );
+    });
+
+  if (filtered.length === 0) {
+    container.innerHTML = `<div class="card"><p>Nenhum tópico do material corresponde a "<strong>${escapeHtml(state.materialSearch)}</strong>".</p></div>`;
+    return;
+  }
+
+  container.innerHTML = filtered.map(({ sec, idx }) => {
     const blockId = `mat-${idx}`;
     const isReviewed = isBlockReviewed(docId, blockId);
     const lowerTitle = sec.title.toLowerCase();
@@ -550,12 +620,18 @@ function renderSimuladoPanel(docId, parsed) {
   const questions = parsed.questions;
   const container = document.getElementById("quizQuestionsContainer");
   const banner = document.getElementById("quizScoreBanner");
+  const answeredPill = document.getElementById("quizAnsweredPill");
 
   document.getElementById("chkInstantFeedback").checked = state.instantFeedback;
 
   if (questions.length === 0) {
     banner.classList.remove("visible");
-    container.innerHTML = `<div class="card"><p>Nenhuma questão encontrada na seção de simulado deste arquivo .md.</p></div>`;
+    answeredPill.textContent = "0 / 0 respondidas";
+    container.innerHTML = `
+      <div class="card">
+        <p style="margin: 0;">Nenhuma questão encontrada neste arquivo <code>.md</code>. Verifique se a seção possui o título <code>## 3. SIMULADO FCC</code>.</p>
+      </div>
+    `;
     return;
   }
 
@@ -565,7 +641,7 @@ function renderSimuladoPanel(docId, parsed) {
   container.innerHTML = questions.map((q, idx) => {
     const chosen = progress.answers[q.id] || "";
     if (chosen) answeredCount++;
-    const isCorrect = chosen && q.correctLetter && chosen === q.correctLetter;
+    const isCorrect = Boolean(chosen && q.correctLetter && chosen === q.correctLetter);
     if (isCorrect) correctCount++;
 
     const reveal = Boolean(progress.graded || (state.instantFeedback && chosen));
@@ -573,7 +649,7 @@ function renderSimuladoPanel(docId, parsed) {
     const optionsHtml = q.options.map(opt => {
       const isSelected = chosen === opt.letter;
       let statusClass = "";
-      if (reveal) {
+      if (reveal && q.correctLetter) {
         if (opt.letter === q.correctLetter) {
           statusClass = "correct";
         } else if (isSelected && opt.letter !== q.correctLetter) {
@@ -596,17 +672,25 @@ function renderSimuladoPanel(docId, parsed) {
     }).join("");
 
     let feedbackHtml = "";
-    if (reveal && q.correctLetter) {
-      const fbClass = isCorrect ? "is-right" : "is-wrong";
-      const fbLead = isCorrect
-        ? `<strong>✓ Resposta correta!</strong>`
-        : `<strong>✕ Resposta incorreta.</strong> Gabarito: <strong>${q.correctLetter.toUpperCase()})</strong>`;
-      feedbackHtml = `
-        <div class="question-feedback visible ${fbClass}">
-          <div style="margin-bottom: 6px;">${fbLead}</div>
-          <div class="md-content">${q.commentHtml || ""}</div>
-        </div>
-      `;
+    if (reveal) {
+      if (q.correctLetter) {
+        const fbClass = isCorrect ? "is-right" : "is-wrong";
+        const fbLead = isCorrect
+          ? `<strong>✓ Resposta correta!</strong>`
+          : `<strong>✕ Resposta incorreta.</strong> Gabarito: <strong>${q.correctLetter.toUpperCase()})</strong>`;
+        feedbackHtml = `
+          <div class="question-feedback visible ${fbClass}">
+            <div style="margin-bottom: 6px;">${fbLead}</div>
+            <div class="md-content">${q.commentHtml || ""}</div>
+          </div>
+        `;
+      } else if (q.commentHtml) {
+        feedbackHtml = `
+          <div class="question-feedback visible">
+            <div class="md-content">${q.commentHtml}</div>
+          </div>
+        `;
+      }
     }
 
     return `
@@ -615,19 +699,21 @@ function renderSimuladoPanel(docId, parsed) {
           <span class="question-num">Questão ${escapeHtml(q.number || String(idx + 1))}</span>
           ${chosen ? `<span class="badge badge-neutral">Marcada: ${chosen.toUpperCase()})</span>` : ""}
         </div>
-        <p class="question-statement">${renderInlineMarkdown(q.statement)}</p>
+        <div class="question-statement">${q.statementHtml}</div>
         <div class="options-list">${optionsHtml}</div>
         ${feedbackHtml}
       </article>
     `;
   }).join("");
 
+  answeredPill.textContent = `${answeredCount} / ${questions.length} respondidas`;
+
   if (progress.graded || (state.instantFeedback && answeredCount > 0)) {
     const pct = Math.round((correctCount / questions.length) * 100);
     banner.classList.add("visible");
     document.getElementById("quizScoreText").textContent = `${correctCount} / ${questions.length} (${pct}%)`;
     document.getElementById("quizScoreMessage").textContent = progress.graded
-      ? "Simulado corrigido. Suas respostas ficam salvas automaticamente."
+      ? (pct >= 80 ? "Excelente desempenho nível FCC!" : "Revise os comentários abaixo para fixar as pegadinhas.")
       : `${answeredCount} de ${questions.length} questão(ões) respondida(s).`;
   } else {
     banner.classList.remove("visible");
@@ -636,42 +722,45 @@ function renderSimuladoPanel(docId, parsed) {
 
 window.selectQuizOption = function(questionId, letter) {
   const doc = getActiveDoc();
+  if (!doc) return;
   const prog = getDocProgress(doc.id);
   prog.answers[questionId] = letter;
   saveState();
-  renderActiveDocument();
+  renderAll();
 };
 
 function gradeCurrentQuiz() {
   const doc = getActiveDoc();
+  if (!doc) return;
   const prog = getDocProgress(doc.id);
   prog.graded = true;
   saveState();
-  renderActiveDocument();
-  showToast("Simulado corrigido e salvo no navegador!", "success");
+  renderAll();
+  showToast("Simulado corrigido e salvo!", "success");
 }
 
 function clearCurrentQuiz() {
   const doc = getActiveDoc();
+  if (!doc) return;
   const prog = getDocProgress(doc.id);
   prog.answers = {};
   prog.graded = false;
   saveState();
-  renderActiveDocument();
-  showToast("Respostas do simulado limpas.");
+  renderAll();
+  showToast("Respostas limpas. Bom novo treino!");
 }
 
 function renderGabaritoPanel(parsed) {
   const panel = document.getElementById("panel-gabarito");
   if (parsed.gabaritoList.length === 0) {
-    panel.innerHTML = `<div class="card"><p>Nenhum gabarito comentado encontrado neste arquivo .md.</p></div>`;
+    panel.innerHTML = `<div class="card"><p style="margin: 0;">Nenhum gabarito comentado encontrado neste arquivo <code>.md</code>.</p></div>`;
     return;
   }
 
   panel.innerHTML = parsed.gabaritoList.map(item => `
     <div class="gabarito-item">
-      <div class="card-header" style="margin-bottom: 6px;">
-        <h3 class="card-title">Questão ${item.qNum}</h3>
+      <div class="card-header" style="margin-bottom: 8px;">
+        <h3 class="card-title">Questão ${escapeHtml(item.qNum)}</h3>
         ${item.correctLetter ? `<span class="gabarito-key">Gabarito: ${item.correctLetter.toUpperCase()})</span>` : ""}
       </div>
       <div class="md-content">${item.commentHtml}</div>
@@ -680,12 +769,17 @@ function renderGabaritoPanel(parsed) {
 }
 
 /* =========================================================================
-   MODO ANOTAÇÕES & BACKUP JSON
+   ANOTAÇÕES PESSOAIS & BACKUP JSON
    ========================================================================= */
 function renderNotesPanel(docId, parsed) {
   const topicSelect = document.getElementById("noteTopicSelect");
   const currentTopicVal = topicSelect.value;
-  const topics = ["Geral da Matéria", "Diagnóstico do Foco", ...parsed.materialSections.map(s => s.title), "Simulado FCC"];
+  const topics = [
+    "Geral da Matéria",
+    "Diagnóstico do Foco",
+    ...parsed.materialSections.map(s => s.title),
+    "Simulado FCC"
+  ];
 
   topicSelect.innerHTML = topics.map(t => `<option value="${escapeHtml(t)}">Tópico: ${escapeHtml(t)}</option>`).join("");
   if (topics.includes(currentTopicVal)) {
@@ -726,7 +820,7 @@ function renderNotesPanel(docId, parsed) {
     listContainer.innerHTML = `
       <div class="card">
         <p style="margin: 0; color: var(--text-muted);">
-          Nenhuma anotação encontrada para este filtro. Use o formulário acima para registrar seus resumos e lembretes.
+          Nenhuma anotação encontrada. Use o formulário acima para salvar seus resumos e lembretes de prova.
         </p>
       </div>
     `;
@@ -742,8 +836,8 @@ function renderNotesPanel(docId, parsed) {
       ${note.title ? `<h4 class="card-title" style="margin-bottom: 6px;">${escapeHtml(note.title)}</h4>` : ""}
       <p class="note-text">${escapeHtml(note.body)}</p>
       <div class="note-actions">
-        <button type="button" class="btn" onclick="editNote('${note.id}')">Editar</button>
-        <button type="button" class="btn btn-danger-ghost" onclick="deleteNote('${note.id}')">Excluir</button>
+        <button type="button" class="btn btn-xs" onclick="editNote('${note.id}')">Editar</button>
+        <button type="button" class="btn btn-xs btn-danger-ghost" onclick="deleteNote('${note.id}')">Excluir</button>
       </div>
     </article>
   `).join("");
@@ -752,6 +846,7 @@ function renderNotesPanel(docId, parsed) {
 function handleNoteSubmit(e) {
   e.preventDefault();
   const doc = getActiveDoc();
+  if (!doc) return;
   const parsed = parseStudyMarkdown(doc.markdown, doc.fileName);
   const title = document.getElementById("noteTitleInput").value.trim();
   const topic = document.getElementById("noteTopicSelect").value || "Geral da Matéria";
@@ -784,7 +879,7 @@ function handleNoteSubmit(e) {
       body,
       updatedAt: nowStr
     });
-    showToast("Anotação salva no navegador!", "success");
+    showToast("Anotação salva!", "success");
   }
 
   document.getElementById("noteTitleInput").value = "";
@@ -841,9 +936,9 @@ function importBackupJson(file) {
   reader.onload = () => {
     try {
       const data = JSON.parse(String(reader.result || "{}"));
-      if (Array.isArray(data.docs) && data.docs.length > 0) {
+      if (Array.isArray(data.docs)) {
         state.docs = data.docs;
-        state.activeDocId = data.docs[0].id;
+        state.activeDocId = data.docs[0] ? data.docs[0].id : null;
       }
       if (data.progress && typeof data.progress === "object") {
         state.progress = data.progress;
@@ -853,7 +948,7 @@ function importBackupJson(file) {
       }
       saveState();
       renderAll();
-      showToast("Backup JSON restaurado com sucesso!", "success");
+      showToast("Backup JSON restaurado!", "success");
     } catch (err) {
       showToast("Arquivo JSON inválido.", "error");
     }
@@ -862,7 +957,7 @@ function importBackupJson(file) {
 }
 
 /* =========================================================================
-   GERENCIAMENTO DE ARQUIVOS .MD & SINCRONIZAÇÃO COM ./estudos-banestes/
+   IMPORTAÇÃO & SINCRONIZAÇÃO COM ./estudos-banestes/
    ========================================================================= */
 function upsertMarkdownDocument(fileName, markdown, source = "local") {
   const cleanName = String(fileName || "materia.md").split("/").pop();
@@ -874,7 +969,7 @@ function upsertMarkdownDocument(fileName, markdown, source = "local") {
     return existing;
   }
   const newDoc = {
-    id: `doc-${Date.now()}-${Math.random().toString(36).slice(2, 6)}`,
+    id: `doc-${cleanName.toLowerCase().replace(/[^a-z0-9]+/g, "-")}-${Date.now().toString(36)}`,
     fileName: cleanName,
     source,
     markdown,
@@ -886,9 +981,9 @@ function upsertMarkdownDocument(fileName, markdown, source = "local") {
 
 function handleFilesLoaded(fileList) {
   if (!fileList || fileList.length === 0) return;
-  const files = Array.from(fileList).filter(f => /\.(md|markdown|txt)$/i.test(f.name));
+  const files = Array.from(fileList).filter(f => /\.(md|markdown|txt)$/i.test(f.name) && f.name.toLowerCase() !== "readme.md");
   if (files.length === 0) {
-    showToast("Selecione arquivos .md válidos.", "error");
+    showToast("Nenhum arquivo .md válido encontrado.", "error");
     return;
   }
 
@@ -900,7 +995,9 @@ function handleFilesLoaded(fileList) {
       lastDoc = upsertMarkdownDocument(file.name, String(reader.result || ""), "local");
       processed++;
       if (processed === files.length) {
-        if (lastDoc) state.activeDocId = lastDoc.id;
+        if (!state.activeDocId || files.length === 1) {
+          state.activeDocId = lastDoc.id;
+        }
         saveState();
         renderAll();
         showToast(`${processed} arquivo(s) .md carregado(s)!`, "success");
@@ -912,17 +1009,33 @@ function handleFilesLoaded(fileList) {
 
 function detectGitHubRepoInfo() {
   const label = document.getElementById("repoStatusLabel");
+  const slugInput = document.getElementById("githubRepoSlugInput");
+  if (slugInput && state.githubRepoSlug) {
+    slugInput.value = state.githubRepoSlug;
+  }
+
+  // 1. Se o usuário informou manualmente usuario/repo
+  if (state.githubRepoSlug && state.githubRepoSlug.includes("/")) {
+    const [owner, repo] = state.githubRepoSlug.split("/").map(s => s.trim());
+    if (owner && repo) {
+      label.textContent = `${owner}/${repo} • estudos-banestes/`;
+      return { hasGitHubRepo: true, owner, repo };
+    }
+  }
+
+  // 2. Detecção automática via GitHub Pages (project site ou user root site)
   const host = window.location.hostname || "";
   const pathParts = window.location.pathname.split("/").filter(Boolean);
 
-  if (host.endsWith(".github.io") && pathParts.length >= 1) {
+  if (host.endsWith(".github.io")) {
     const owner = host.replace(".github.io", "");
-    const repo = pathParts[0];
-    label.textContent = `${owner}/${repo} • ${STUDY_FOLDER_PATH}/`;
-    return { isGitHubPages: true, owner, repo };
+    const repo = pathParts.length >= 1 ? pathParts[0] : `${owner}.github.io`;
+    label.textContent = `${owner}/${repo} • estudos-banestes/`;
+    return { hasGitHubRepo: true, owner, repo };
   }
-  label.textContent = `Raiz do repo • ${STUDY_FOLDER_PATH}/`;
-  return { isGitHubPages: false };
+
+  label.textContent = `Pasta • ./estudos-banestes/`;
+  return { hasGitHubRepo: false };
 }
 
 async function fetchMarkdownFromRelativePath(relPath) {
@@ -939,9 +1052,9 @@ async function fetchMarkdownFromRelativePath(relPath) {
 
 async function syncEstudosBanestesFolder(notifyUser = false) {
   const repoInfo = detectGitHubRepoInfo();
-  const candidateFiles = new Set();
+  const candidateMap = new Map(); // fileName -> downloadUrl (opcional)
 
-  // 1. Tenta manifest.json em ./estudos-banestes/manifest.json
+  // 1. Tenta ./estudos-banestes/manifest.json (funciona em qualquer servidor estático)
   try {
     const manRes = await fetch(`${STUDY_FOLDER_PATH}/manifest.json`, { cache: "no-store" });
     if (manRes.ok) {
@@ -949,15 +1062,17 @@ async function syncEstudosBanestesFolder(notifyUser = false) {
       const list = Array.isArray(manData) ? manData : (Array.isArray(manData.files) ? manData.files : []);
       list.forEach(item => {
         const name = typeof item === "string" ? item : (item && item.file);
-        if (name && /\.md$/i.test(name)) candidateFiles.add(name.split("/").pop());
+        if (name && /\.md$/i.test(name)) {
+          candidateMap.set(name.split("/").pop(), null);
+        }
       });
     }
   } catch (_) {
     // Ignora ausência de manifest.json
   }
 
-  // 2. Se estiver no GitHub Pages, consulta a API pública do repositório
-  if (repoInfo.isGitHubPages) {
+  // 2. Consulta a API pública do GitHub na pasta estudos-banestes
+  if (repoInfo.hasGitHubRepo) {
     try {
       const apiUrl = `https://api.github.com/repos/${repoInfo.owner}/${repoInfo.repo}/contents/estudos-banestes`;
       const apiRes = await fetch(apiUrl);
@@ -965,27 +1080,30 @@ async function syncEstudosBanestesFolder(notifyUser = false) {
         const items = await apiRes.json();
         if (Array.isArray(items)) {
           items.forEach(item => {
-            if (item && item.type === "file" && /\.md$/i.test(item.name)) {
-              candidateFiles.add(item.name);
+            if (item && item.type === "file" && /\.md$/i.test(item.name) && item.name.toLowerCase() !== "readme.md") {
+              candidateMap.set(item.name, item.download_url || null);
             }
           });
         }
       }
     } catch (_) {
-      // Ignora erro de rede/rate-limit
+      // Ignora erro de rede/CORS
     }
   }
 
-  if (candidateFiles.size === 0) {
+  if (candidateMap.size === 0) {
     if (notifyUser) {
-      showToast("Nenhum .md novo encontrado em ./estudos-banestes/.", "info");
+      showToast("Nenhum .md encontrado automaticamente. Use 'Importar .md' ou configure o repositório.", "info");
     }
     return;
   }
 
   let importedCount = 0;
-  for (const fileName of candidateFiles) {
-    const mdContent = await fetchMarkdownFromRelativePath(`${STUDY_FOLDER_PATH}/${fileName}`);
+  for (const [fileName, downloadUrl] of candidateMap.entries()) {
+    let mdContent = await fetchMarkdownFromRelativePath(`${STUDY_FOLDER_PATH}/${fileName}`);
+    if (!mdContent && downloadUrl) {
+      mdContent = await fetchMarkdownFromRelativePath(downloadUrl);
+    }
     if (mdContent) {
       upsertMarkdownDocument(fileName, mdContent, "github");
       importedCount++;
@@ -993,25 +1111,37 @@ async function syncEstudosBanestesFolder(notifyUser = false) {
   }
 
   if (importedCount > 0) {
+    // Ordena os documentos por nome de arquivo (data crescente/decrescente)
+    state.docs.sort((a, b) => a.fileName.localeCompare(b.fileName));
+    if (!state.activeDocId || !state.docs.some(d => d.id === state.activeDocId)) {
+      state.activeDocId = state.docs[0].id;
+    }
     saveState();
     renderAll();
     if (notifyUser) {
-      showToast(`${importedCount} arquivo(s) sincronizado(s) de ./estudos-banestes/!`, "success");
+      showToast(`${importedCount} matéria(s) sincronizada(s) de ./estudos-banestes/!`, "success");
     }
   } else if (notifyUser) {
-    showToast("Arquivos listados não puderam ser lidos.", "error");
+    showToast("Não foi possível ler os arquivos .md listados.", "error");
   }
 }
 
 /* =========================================================================
-   RENDERIZAÇÃO GERAL, TEMA, MODO FOCO & RESET
+   RENDERIZAÇÃO GERAL, TEMA, MODO FOCO & LIMPEZA
    ========================================================================= */
 function applyThemeAndFocus() {
   document.documentElement.setAttribute("data-theme", state.theme);
   document.body.classList.toggle("focus-mode", state.focusMode);
 
-  const themeBtn = document.getElementById("btnThemeToggle");
-  themeBtn.textContent = state.theme === "dark" ? "Claro" : "Escuro";
+  const themeIcon = document.getElementById("themeIcon");
+  const themeLabel = document.getElementById("themeLabel");
+  if (state.theme === "dark") {
+    themeLabel.textContent = "Claro";
+    themeIcon.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>`;
+  } else {
+    themeLabel.textContent = "Escuro";
+    themeIcon.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>`;
+  }
 
   const focusBtn = document.getElementById("btnFocusMode");
   focusBtn.classList.toggle("btn-active", state.focusMode);
@@ -1019,24 +1149,56 @@ function applyThemeAndFocus() {
 
 function renderSidebar() {
   const fileListEl = document.getElementById("fileList");
+  const progressCard = document.getElementById("sidebarProgressCard");
   document.getElementById("fileCountLabel").textContent = String(state.docs.length);
 
-  fileListEl.innerHTML = state.docs.map(doc => {
+  if (state.docs.length === 0) {
+    fileListEl.innerHTML = `
+      <p class="helper-hint" style="padding: 8px 4px;">
+        Nenhuma matéria importada ainda.
+      </p>
+    `;
+    progressCard.style.display = "none";
+    return;
+  }
+
+  progressCard.style.display = "block";
+  const docQuery = state.docSearch.trim().toLowerCase();
+
+  const filteredDocs = state.docs.filter(doc => {
+    if (!docQuery) return true;
+    const parsed = parseStudyMarkdown(doc.markdown, doc.fileName);
+    return (
+      parsed.title.toLowerCase().includes(docQuery) ||
+      doc.fileName.toLowerCase().includes(docQuery) ||
+      parsed.axisLabel.toLowerCase().includes(docQuery)
+    );
+  });
+
+  fileListEl.innerHTML = filteredDocs.map(doc => {
     const parsed = parseStudyMarkdown(doc.markdown, doc.fileName);
     const isActive = doc.id === state.activeDocId;
-    const canRemove = state.docs.length > 1;
+    const prog = getDocProgress(doc.id);
+    const qTotal = parsed.questions.length;
+    const qCorrect = parsed.questions.filter(q => q.correctLetter && prog.answers[q.id] === q.correctLetter).length;
+    const qAnswered = Object.keys(prog.answers).length;
+
     return `
       <div class="file-item ${isActive ? "active" : ""}">
         <button type="button" class="file-item-btn" onclick="selectDocument('${doc.id}')">
           <span class="file-name">${escapeHtml(parsed.title)}</span>
-          <span class="file-meta">${escapeHtml(doc.fileName)}${parsed.axisLabel ? ` • ${escapeHtml(parsed.axisLabel)}` : ""}</span>
+          <span class="file-meta">
+            <span>${escapeHtml(parsed.dateLabel || doc.fileName)}</span>
+            ${qTotal > 0 ? `<span class="file-mini-badge ${qCorrect === qTotal && qTotal > 0 ? "done" : ""}">${qAnswered > 0 ? `${qCorrect}/${qTotal} acertos` : `${qTotal} questões`}</span>` : ""}
+          </span>
         </button>
-        ${canRemove ? `<button type="button" class="file-remove-btn" title="Remover matéria" onclick="removeDocument('${doc.id}')">×</button>` : ""}
+        <button type="button" class="file-remove-btn" title="Remover matéria" onclick="removeDocument('${doc.id}')">×</button>
       </div>
     `;
   }).join("");
 
   const doc = getActiveDoc();
+  if (!doc) return;
   const parsed = parseStudyMarkdown(doc.markdown, doc.fileName);
   const totalBlocks = 1 + parsed.materialSections.length;
   const prog = getDocProgress(doc.id);
@@ -1051,20 +1213,22 @@ function renderSidebar() {
 window.selectDocument = function(docId) {
   state.activeDocId = docId;
   state.editingNoteId = null;
+  state.materialSearch = "";
+  const matInput = document.getElementById("materialSearchInput");
+  if (matInput) matInput.value = "";
   saveState();
   renderAll();
   setDrawerOpen(false);
 };
 
 window.removeDocument = function(docId) {
-  if (state.docs.length <= 1) return;
   state.docs = state.docs.filter(d => d.id !== docId);
   if (state.activeDocId === docId) {
-    state.activeDocId = state.docs[0].id;
+    state.activeDocId = state.docs[0] ? state.docs[0].id : null;
   }
   saveState();
   renderAll();
-  showToast("Matéria removida da lista.");
+  showToast("Matéria removida.");
 };
 
 function renderDocHeader(doc, parsed) {
@@ -1072,7 +1236,7 @@ function renderDocHeader(doc, parsed) {
   headerEl.innerHTML = `
     <div class="doc-badges">
       ${parsed.axisLabel ? `<span class="badge">${escapeHtml(parsed.axisLabel)}</span>` : ""}
-      ${parsed.dateLabel ? `<span class="badge badge-neutral">📅 ${escapeHtml(parsed.dateLabel)}</span>` : ""}
+      ${parsed.dateLabel ? `<span class="badge badge-neutral">Data: ${escapeHtml(parsed.dateLabel)}</span>` : ""}
       <span class="badge badge-neutral">Banca FCC • Banestes</span>
     </div>
     <h2 class="doc-title">${escapeHtml(parsed.title)}</h2>
@@ -1081,7 +1245,19 @@ function renderDocHeader(doc, parsed) {
 }
 
 function renderActiveDocument() {
+  const emptyView = document.getElementById("emptyStateView");
+  const activeContainer = document.getElementById("activeDocContainer");
   const doc = getActiveDoc();
+
+  if (!doc) {
+    emptyView.style.display = "block";
+    activeContainer.style.display = "none";
+    return;
+  }
+
+  emptyView.style.display = "none";
+  activeContainer.style.display = "block";
+
   const parsed = parseStudyMarkdown(doc.markdown, doc.fileName);
 
   renderDocHeader(doc, parsed);
@@ -1128,22 +1304,25 @@ function renderAll() {
 
 function resetApplication() {
   localStorage.removeItem(STORAGE_KEY);
-  localStorage.removeItem("banestes_fcc_estudos_v1");
+  const keptSlug = state.githubRepoSlug;
   state = {
     theme: "light",
     focusMode: false,
-    activeDocId: "doc-fgc-banestes",
+    activeDocId: null,
     activeTab: "diagnostico",
     instantFeedback: true,
+    docSearch: "",
+    materialSearch: "",
     noteSearch: "",
     noteScope: "current",
     editingNoteId: null,
-    docs: DEFAULT_DOCS.map(d => ({ ...d })),
+    githubRepoSlug: keptSlug,
+    docs: [],
     progress: {},
     notes: []
   };
   renderAll();
-  showToast("Aplicação restaurada para o estado inicial.");
+  syncEstudosBanestesFolder(true);
 }
 
 function setDrawerOpen(open) {
@@ -1154,7 +1333,7 @@ function setDrawerOpen(open) {
 }
 
 /* =========================================================================
-   INICIALIZAÇÃO & EVENT LISTENERS
+   EVENT LISTENERS & INICIALIZAÇÃO
    ========================================================================= */
 function bindEvents() {
   // Drawer mobile
@@ -1162,12 +1341,79 @@ function bindEvents() {
   document.getElementById("btnCloseDrawer").addEventListener("click", () => setDrawerOpen(false));
   document.getElementById("drawerBackdrop").addEventListener("click", () => setDrawerOpen(false));
 
-  // Sincronizar pasta ./estudos-banestes/
-  document.getElementById("btnSyncRepo").addEventListener("click", () => {
+  // Sincronização ./estudos-banestes/
+  document.getElementById("btnSyncRepo").addEventListener("click", () => syncEstudosBanestesFolder(true));
+  document.getElementById("btnEmptySync").addEventListener("click", () => syncEstudosBanestesFolder(true));
+
+  // Salvar slug usuario/repo
+  document.getElementById("btnSaveRepoSlug").addEventListener("click", () => {
+    state.githubRepoSlug = document.getElementById("githubRepoSlugInput").value.trim();
+    saveState();
     syncEstudosBanestesFolder(true);
   });
 
-  // Abas desktop + barra inferior mobile
+  // Inputs de arquivo e pasta
+  const fileInput = document.getElementById("mdFileInput");
+  const folderInput = document.getElementById("mdFolderInput");
+
+  document.getElementById("btnLoadMd").addEventListener("click", () => fileInput.click());
+  document.getElementById("btnSelectFilesInline").addEventListener("click", (e) => {
+    e.stopPropagation();
+    fileInput.click();
+  });
+  document.getElementById("btnSelectFolderInline").addEventListener("click", (e) => {
+    e.stopPropagation();
+    folderInput.click();
+  });
+  document.getElementById("btnEmptyLoadFiles").addEventListener("click", () => fileInput.click());
+  document.getElementById("btnEmptyLoadFolder").addEventListener("click", () => folderInput.click());
+
+  fileInput.addEventListener("change", (e) => {
+    handleFilesLoaded(e.target.files);
+    fileInput.value = "";
+    setDrawerOpen(false);
+  });
+
+  folderInput.addEventListener("change", (e) => {
+    handleFilesLoaded(e.target.files);
+    folderInput.value = "";
+    setDrawerOpen(false);
+  });
+
+  // Dropzone
+  const dropzone = document.getElementById("dropzone");
+  dropzone.addEventListener("click", () => fileInput.click());
+  dropzone.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      fileInput.click();
+    }
+  });
+  dropzone.addEventListener("dragover", (e) => {
+    e.preventDefault();
+    dropzone.classList.add("dragover");
+  });
+  dropzone.addEventListener("dragleave", () => dropzone.classList.remove("dragover"));
+  dropzone.addEventListener("drop", (e) => {
+    e.preventDefault();
+    dropzone.classList.remove("dragover");
+    handleFilesLoaded(e.dataTransfer.files);
+    setDrawerOpen(false);
+  });
+
+  // Busca de matérias na sidebar & busca no material
+  document.getElementById("docSearchInput").addEventListener("input", (e) => {
+    state.docSearch = e.target.value;
+    renderSidebar();
+  });
+
+  document.getElementById("materialSearchInput").addEventListener("input", (e) => {
+    state.materialSearch = e.target.value;
+    const doc = getActiveDoc();
+    if (doc) renderMaterialPanel(doc.id, parseStudyMarkdown(doc.markdown, doc.fileName));
+  });
+
+  // Navegação de abas (Desktop + Mobile)
   const switchTab = (tabName) => {
     if (!tabName) return;
     state.activeTab = tabName;
@@ -1183,7 +1429,16 @@ function bindEvents() {
     btn.addEventListener("click", () => switchTab(btn.dataset.tab));
   });
 
-  // Formulário e filtros de anotações
+  // Atalhos de teclado (Alt + 1..5 para abas)
+  document.addEventListener("keydown", (e) => {
+    if (e.altKey && ["1", "2", "3", "4", "5"].includes(e.key)) {
+      e.preventDefault();
+      const map = ["diagnostico", "material", "simulado", "anotacoes", "gabarito"];
+      switchTab(map[Number(e.key) - 1]);
+    }
+  });
+
+  // Anotações
   document.getElementById("noteForm").addEventListener("submit", handleNoteSubmit);
   document.getElementById("btnCancelEditNote").addEventListener("click", () => {
     state.editingNoteId = null;
@@ -1193,15 +1448,14 @@ function bindEvents() {
   });
   document.getElementById("noteSearchInput").addEventListener("input", (e) => {
     state.noteSearch = e.target.value;
-    saveState();
     const doc = getActiveDoc();
-    renderNotesPanel(doc.id, parseStudyMarkdown(doc.markdown, doc.fileName));
+    if (doc) renderNotesPanel(doc.id, parseStudyMarkdown(doc.markdown, doc.fileName));
   });
   document.getElementById("noteFilterScope").addEventListener("change", (e) => {
     state.noteScope = e.target.value;
     saveState();
     const doc = getActiveDoc();
-    renderNotesPanel(doc.id, parseStudyMarkdown(doc.markdown, doc.fileName));
+    if (doc) renderNotesPanel(doc.id, parseStudyMarkdown(doc.markdown, doc.fileName));
   });
 
   // Backup JSON
@@ -1209,47 +1463,11 @@ function bindEvents() {
   const jsonInput = document.getElementById("jsonImportInput");
   document.getElementById("btnImportJson").addEventListener("click", () => jsonInput.click());
   jsonInput.addEventListener("change", (e) => {
-    if (e.target.files && e.target.files[0]) {
-      importBackupJson(e.target.files[0]);
-    }
+    if (e.target.files && e.target.files[0]) importBackupJson(e.target.files[0]);
     e.target.value = "";
   });
 
-  // Botão carregar .md
-  const fileInput = document.getElementById("mdFileInput");
-  document.getElementById("btnLoadMd").addEventListener("click", () => {
-    fileInput.click();
-  });
-  fileInput.addEventListener("change", (e) => {
-    handleFilesLoaded(e.target.files);
-    fileInput.value = "";
-    setDrawerOpen(false);
-  });
-
-  // Dropzone drag-and-drop
-  const dropzone = document.getElementById("dropzone");
-  dropzone.addEventListener("click", () => fileInput.click());
-  dropzone.addEventListener("keydown", (e) => {
-    if (e.key === "Enter" || e.key === " ") {
-      e.preventDefault();
-      fileInput.click();
-    }
-  });
-  dropzone.addEventListener("dragover", (e) => {
-    e.preventDefault();
-    dropzone.classList.add("dragover");
-  });
-  dropzone.addEventListener("dragleave", () => {
-    dropzone.classList.remove("dragover");
-  });
-  dropzone.addEventListener("drop", (e) => {
-    e.preventDefault();
-    dropzone.classList.remove("dragover");
-    handleFilesLoaded(e.dataTransfer.files);
-    setDrawerOpen(false);
-  });
-
-  // Controles do simulado
+  // Simulado
   document.getElementById("btnGradeQuiz").addEventListener("click", gradeCurrentQuiz);
   document.getElementById("btnClearQuiz").addEventListener("click", clearCurrentQuiz);
   document.getElementById("chkInstantFeedback").addEventListener("change", (e) => {
@@ -1258,7 +1476,7 @@ function bindEvents() {
     renderActiveDocument();
   });
 
-  // Tema e Modo Foco
+  // Tema, Foco e Limpar
   document.getElementById("btnThemeToggle").addEventListener("click", () => {
     state.theme = state.theme === "dark" ? "light" : "dark";
     saveState();
@@ -1271,7 +1489,6 @@ function bindEvents() {
     applyThemeAndFocus();
   });
 
-  // Resetar
   document.getElementById("btnResetAll").addEventListener("click", resetApplication);
 }
 
