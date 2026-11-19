@@ -3,253 +3,150 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Estudos Banestes (FCC) — Portal de Revisão &amp; Anotações</title>
+  <meta name="theme-color" content="#0b4f8a" />
+  <title>Estudos Banestes (FCC) — Revisão &amp; Anotações</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.1.6/purify.min.js"></script>
+  <script defer src="app.js"></script>
 </head>
 <body>
-  <div class="app-shell">
-    <!-- CABEÇALHO SUPERIOR -->
-    <header class="topbar">
-      <div class="brand">
-        <button type="button" class="btn" id="btnOpenDrawer" aria-label="Abrir menu de matérias e arquivos">
-          ☰
-        </button>
-        <div class="brand-badge" aria-hidden="true">FCC</div>
-        <div style="min-width: 0;">
-          <h1 class="brand-title">Estudos Banestes</h1>
-          <p class="brand-subtitle" id="repoStatusLabel">Raiz do repo • ./estudos-banestes/</p>
-        </div>
+<div class="app-shell">
+  <header class="topbar">
+    <div class="brand">
+      <button type="button" class="btn" id="btnOpenDrawer" aria-label="Abrir menu">☰</button>
+      <div class="brand-badge" aria-hidden="true">FCC</div>
+      <div style="min-width:0">
+        <h1 class="brand-title">Estudos Banestes</h1>
+        <p class="brand-subtitle" id="repoStatusLabel">./estudos-banestes/</p>
       </div>
-
-      <div class="topbar-actions">
-        <button type="button" class="btn btn-primary" id="btnLoadMd">
-          + .md
-        </button>
-        <input type="file" id="mdFileInput" accept=".md,.markdown,.txt" multiple hidden />
-        <input type="file" id="jsonImportInput" accept=".json,application/json" hidden />
-
-        <button type="button" class="btn" id="btnFocusMode" title="Alternar modo foco">
-          Foco
-        </button>
-        <button type="button" class="btn" id="btnThemeToggle" title="Alternar tema claro/escuro">
-          Escuro
-        </button>
-        <button type="button" class="btn btn-danger-ghost" id="btnResetAll" title="Restaurar dados iniciais">
-          Reset
-        </button>
-      </div>
-    </header>
-
-    <!-- BACKDROP PARA DRAWER MOBILE -->
-    <div class="drawer-backdrop" id="drawerBackdrop" aria-hidden="true"></div>
-
-    <!-- ÁREA DE TRABALHO -->
-    <div class="workspace">
-      <!-- BARRA LATERAL / DRAWER: ARQUIVOS .MD, GITHUB PAGES & PROGRESSO -->
-      <aside class="sidebar" id="sidebarDrawer" aria-label="Arquivos Markdown, GitHub Pages e progresso">
-        <div class="sidebar-mobile-head">
-          <strong style="font-size: 0.92rem;">Matérias &amp; Arquivos</strong>
-          <button type="button" class="btn" id="btnCloseDrawer" aria-label="Fechar menu">✕</button>
-        </div>
-
-        <div>
-          <div class="sidebar-section-title">
-            <span>Sincronizar ./estudos-banestes/</span>
-            <button type="button" class="btn" style="padding: 3px 8px; min-height: 26px; font-size: 0.72rem;" id="btnSyncRepo">
-              Atualizar
-            </button>
-          </div>
-
-          <div id="dropzone" class="dropzone" tabindex="0" role="button" aria-label="Arraste arquivos Markdown aqui ou clique para selecionar">
-            <strong>Arraste arquivos .md aqui</strong>
-            <p>ou toque em <em>+ .md</em> para importar matérias locais.</p>
-            <small>Salvo automaticamente no navegador</small>
-          </div>
-        </div>
-
-        <div>
-          <div class="sidebar-section-title">
-            <span>Matérias Carregadas</span>
-            <span id="fileCountLabel">1</span>
-          </div>
-          <div id="fileList" class="file-list"></div>
-        </div>
-
-        <div class="progress-card">
-          <div class="sidebar-section-title" style="margin-bottom: 6px;">
-            <span>Progresso de Revisão</span>
-            <span id="progressPercent">0%</span>
-          </div>
-          <div class="progress-row">
-            <span>Blocos revisados</span>
-            <strong id="progressCount">0 / 0</strong>
-          </div>
-          <div class="progress-bar-track">
-            <div class="progress-bar-fill" id="progressBarFill"></div>
-          </div>
-        </div>
-
-        <div>
-          <div class="sidebar-section-title">
-            <span>Backup (Notas &amp; Respostas)</span>
-          </div>
-          <div class="backup-actions">
-            <button type="button" class="btn" id="btnExportJson" title="Baixar backup JSON de notas e respostas">
-              Exportar JSON
-            </button>
-            <button type="button" class="btn" id="btnImportJson" title="Restaurar backup JSON">
-              Importar JSON
-            </button>
-          </div>
-        </div>
-
-        <div class="github-guide-box">
-          <strong>GitHub Pages (Raiz do Repositório)</strong>
-          Mantenha este <code>index.html</code> na raiz do repositório e seus arquivos <code>.md</code> em <code>./estudos-banestes/</code>. Em repositórios públicos no GitHub Pages, a descoberta automática consulta a API do GitHub (com fallback para <code>./estudos-banestes/manifest.json</code> e importação manual).
-        </div>
-      </aside>
-
-      <!-- CONTEÚDO PRINCIPAL -->
-      <main class="main-content" id="mainContent">
-        <section class="doc-header" id="docHeader"></section>
-
-        <!-- ABAS DESKTOP -->
-        <nav class="tabs-bar" role="tablist" aria-label="Seções de estudo">
-          <button type="button" class="tab-btn active" data-tab="diagnostico" role="tab" aria-selected="true">
-            1. Diagnóstico
-          </button>
-          <button type="button" class="tab-btn" data-tab="material" role="tab" aria-selected="false">
-            2. Material <span class="tab-count" id="materialCountBadge">0</span>
-          </button>
-          <button type="button" class="tab-btn" data-tab="simulado" role="tab" aria-selected="false">
-            3. Simulado FCC <span class="tab-count" id="simuladoCountBadge">0</span>
-          </button>
-          <button type="button" class="tab-btn" data-tab="anotacoes" role="tab" aria-selected="false">
-            4. Anotações <span class="tab-count" id="anotacoesCountBadge">0</span>
-          </button>
-          <button type="button" class="tab-btn" data-tab="gabarito" role="tab" aria-selected="false">
-            5. Gabarito
-          </button>
-        </nav>
-
-        <!-- ABA 1: DIAGNÓSTICO -->
-        <section id="panel-diagnostico" class="panel active" role="tabpanel"></section>
-
-        <!-- ABA 2: MATERIAL DE ESTUDO -->
-        <section id="panel-material" class="panel" role="tabpanel"></section>
-
-        <!-- ABA 3: SIMULADO INTERATIVO -->
-        <section id="panel-simulado" class="panel" role="tabpanel">
-          <div class="quiz-toolbar">
-            <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
-              <button type="button" class="btn btn-primary" id="btnGradeQuiz">
-                Corrigir Simulado
-              </button>
-              <button type="button" class="btn" id="btnClearQuiz">
-                Limpar Respostas
-              </button>
-            </div>
-            <label style="display: inline-flex; align-items: center; gap: 8px; font-size: 0.85rem; color: var(--text-secondary); cursor: pointer;">
-              <input type="checkbox" id="chkInstantFeedback" checked />
-              Feedback imediato ao responder
-            </label>
-          </div>
-
-          <div class="quiz-score-banner" id="quizScoreBanner">
-            <div>
-              <div style="font-size: 0.78rem; color: var(--text-muted); font-weight: 700;">DESEMPENHO SALVO</div>
-              <div class="score-value" id="quizScoreText">0 / 5 (0%)</div>
-            </div>
-            <div id="quizScoreMessage" style="font-size: 0.9rem; color: var(--text-secondary);"></div>
-          </div>
-
-          <div id="quizQuestionsContainer"></div>
-        </section>
-
-        <!-- ABA 4: ANOTAÇÕES PESSOAIS -->
-        <section id="panel-anotacoes" class="panel" role="tabpanel">
-          <div class="card">
-            <div class="card-header">
-              <h3 class="card-title" id="noteFormTitle">Nova Anotação de Estudo</h3>
-              <button type="button" class="btn" id="btnCancelEditNote" style="display: none;">
-                Cancelar edição
-              </button>
-            </div>
-
-            <form id="noteForm" class="note-form-grid">
-              <input
-                type="text"
-                id="noteTitleInput"
-                class="field-input"
-                placeholder="Título curto (ex: Pegadinha limite global FGC)"
-                maxlength="120"
-              />
-              <select id="noteTopicSelect" class="field-select" aria-label="Tópico ou seção vinculada">
-                <option value="Geral da Matéria">Tópico: Geral da Matéria</option>
-              </select>
-              <textarea
-                id="noteBodyInput"
-                class="field-textarea"
-                placeholder="Escreva seu resumo, regra, exceção ou dúvida para revisar antes da prova..."
-                required
-              ></textarea>
-              <div style="display: flex; justify-content: flex-end; gap: 8px; flex-wrap: wrap;">
-                <button type="submit" class="btn btn-primary" id="btnSaveNote">
-                  Salvar Anotação
-                </button>
-              </div>
-            </form>
-          </div>
-
-          <div class="notes-toolbar">
-            <input
-              type="search"
-              id="noteSearchInput"
-              class="field-input"
-              placeholder="Buscar nas suas anotações desta matéria..."
-              aria-label="Buscar anotações"
-            />
-            <select id="noteFilterScope" class="field-select" style="max-width: 240px;" aria-label="Filtrar escopo das anotações">
-              <option value="current">Apenas esta matéria</option>
-              <option value="all">Todas as matérias salvas</option>
-            </select>
-          </div>
-
-          <div id="notesListContainer"></div>
-        </section>
-
-        <!-- ABA 5: GABARITO COMENTADO -->
-        <section id="panel-gabarito" class="panel" role="tabpanel"></section>
-      </main>
     </div>
+    <div class="topbar-actions">
+      <button type="button" class="btn btn-primary" id="btnLoadMd">+ .md</button>
+      <input type="file" id="mdFileInput" accept=".md,.markdown,.txt" multiple hidden />
+      <input type="file" id="jsonImportInput" accept=".json,application/json" hidden />
+      <button type="button" class="btn" id="btnFocusMode" title="Modo foco (F)">Foco</button>
+      <button type="button" class="btn" id="btnThemeToggle" title="Alternar tema">Escuro</button>
+      <button type="button" class="btn btn-danger-ghost" id="btnResetAll">Reset</button>
+    </div>
+  </header>
 
-    <!-- NAVEGAÇÃO INFERIOR MOBILE -->
-    <nav class="bottom-nav" aria-label="Navegação rápida mobile">
-      <button type="button" class="bottom-nav-btn active" data-tab="diagnostico">
-        <span>🎯</span>
-        <span>Foco</span>
-      </button>
-      <button type="button" class="bottom-nav-btn" data-tab="material">
-        <span>📖</span>
-        <span>Material</span>
-      </button>
-      <button type="button" class="bottom-nav-btn" data-tab="simulado">
-        <span>✍️</span>
-        <span>Simulado</span>
-      </button>
-      <button type="button" class="bottom-nav-btn" data-tab="anotacoes">
-        <span>📝</span>
-        <span>Notas</span>
-      </button>
-    </nav>
+  <div class="drawer-backdrop" id="drawerBackdrop"></div>
+
+  <div class="workspace">
+    <aside class="sidebar" id="sidebarDrawer" aria-label="Matérias, progresso e backup">
+      <div class="sidebar-mobile-head">
+        <strong>Matérias &amp; arquivos</strong>
+        <button type="button" class="btn" id="btnCloseDrawer" aria-label="Fechar menu">✕</button>
+      </div>
+      <div>
+        <div class="sidebar-section-title"><span>Pasta ./estudos-banestes/</span>
+          <button type="button" class="btn btn-sm" id="btnSyncRepo">Atualizar</button></div>
+        <div id="dropzone" class="dropzone" tabindex="0" role="button" aria-label="Arraste arquivos .md ou clique para selecionar">
+          <strong>Arraste arquivos .md aqui</strong>
+          <p>ou toque em <em>+ .md</em></p>
+          <small>Salvo no navegador</small>
+        </div>
+      </div>
+      <div>
+        <div class="sidebar-section-title"><span>Matérias</span><span id="fileCountLabel">1</span></div>
+        <div id="fileList" class="file-list"></div>
+      </div>
+      <div class="progress-card">
+        <div class="sidebar-section-title"><span>Revisão</span><span id="progressPercent">0%</span></div>
+        <div class="progress-row"><span>Blocos revisados</span><strong id="progressCount">0 / 0</strong></div>
+        <div class="progress-bar-track"><div class="progress-bar-fill" id="progressBarFill"></div></div>
+      </div>
+      <div>
+        <div class="sidebar-section-title"><span>Backup</span></div>
+        <div class="backup-actions">
+          <button type="button" class="btn" id="btnExportJson">Exportar JSON</button>
+          <button type="button" class="btn" id="btnImportJson">Importar JSON</button>
+        </div>
+      </div>
+      <div class="github-guide-box">
+        <strong>GitHub Pages</strong>
+        Mantenha o <code>index.html</code> na raiz e os <code>.md</code> em <code>./estudos-banestes/</code>. Liste os arquivos em <code>manifest.json</code> (<code>["a.md","b.md"]</code>); o botão Atualizar também consulta a API do GitHub.
+        <br /><br /><strong>Atalhos</strong>
+        <code>1</code>–<code>6</code> abas · <code>A</code>–<code>E</code> responde · <code>F</code> foco
+      </div>
+    </aside>
+
+    <main class="main-content" id="mainContent">
+      <section class="doc-header" id="docHeader"></section>
+
+      <nav class="tabs-bar" role="tablist" aria-label="Seções">
+        <button type="button" class="tab-btn active" data-action="tab" data-id="diagnostico" role="tab">1. Diagnóstico</button>
+        <button type="button" class="tab-btn" data-action="tab" data-id="material" role="tab">2. Material <span class="tab-count" id="materialCountBadge">0</span></button>
+        <button type="button" class="tab-btn" data-action="tab" data-id="flashcards" role="tab">3. Flashcards <span class="tab-count" id="cardsCountBadge">0</span></button>
+        <button type="button" class="tab-btn" data-action="tab" data-id="simulado" role="tab">4. Simulado <span class="tab-count" id="simuladoCountBadge">0</span></button>
+        <button type="button" class="tab-btn" data-action="tab" data-id="anotacoes" role="tab">5. Anotações <span class="tab-count" id="anotacoesCountBadge">0</span></button>
+        <button type="button" class="tab-btn" data-action="tab" data-id="gabarito" role="tab">6. Gabarito</button>
+      </nav>
+
+      <section id="panel-diagnostico" class="panel active" role="tabpanel"></section>
+      <section id="panel-material" class="panel" role="tabpanel"></section>
+      <section id="panel-flashcards" class="panel" role="tabpanel"></section>
+
+      <section id="panel-simulado" class="panel" role="tabpanel">
+        <div class="quiz-toolbar">
+          <div class="row">
+            <button type="button" class="btn btn-primary" id="btnGradeQuiz">Corrigir simulado</button>
+            <button type="button" class="btn" id="btnClearQuiz">Limpar respostas</button>
+          </div>
+          <div class="row checks">
+            <label><input type="checkbox" id="chkInstantFeedback" /> Feedback imediato</label>
+            <label><input type="checkbox" id="chkShuffle" /> Embaralhar alternativas</label>
+            <label><input type="checkbox" id="chkOnlyWrong" /> Só as erradas</label>
+          </div>
+        </div>
+        <div class="quiz-score-banner" id="quizScoreBanner">
+          <div><div class="muted-label">Desempenho</div><div class="score-value" id="quizScoreText"></div></div>
+          <div id="quizScoreMessage" class="muted"></div>
+        </div>
+        <div id="quizQuestionsContainer"></div>
+        <div id="quizHistory"></div>
+      </section>
+
+      <section id="panel-anotacoes" class="panel" role="tabpanel">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title" id="noteFormTitle">Nova anotação</h3>
+            <button type="button" class="btn" id="btnCancelEditNote" style="display:none">Cancelar edição</button>
+          </div>
+          <form id="noteForm" class="note-form-grid">
+            <input type="text" id="noteTitleInput" class="field-input" placeholder="Título curto (ex.: limite global do FGC)" maxlength="120" />
+            <select id="noteTopicSelect" class="field-select" aria-label="Tópico"></select>
+            <textarea id="noteBodyInput" class="field-textarea" placeholder="Resumo, regra, exceção ou dúvida para revisar…" required></textarea>
+            <div class="row end"><button type="submit" class="btn btn-primary" id="btnSaveNote">Salvar anotação</button></div>
+          </form>
+        </div>
+        <div class="notes-toolbar">
+          <input type="search" id="noteSearchInput" class="field-input" placeholder="Buscar nas anotações…" aria-label="Buscar anotações" />
+          <select id="noteFilterScope" class="field-select" style="max-width:240px" aria-label="Escopo">
+            <option value="current">Apenas esta matéria</option>
+            <option value="all">Todas as matérias</option>
+          </select>
+        </div>
+        <div id="notesListContainer"></div>
+      </section>
+
+      <section id="panel-gabarito" class="panel" role="tabpanel"></section>
+    </main>
   </div>
 
-  <!-- CONTAINER DE NOTIFICAÇÕES -->
-  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
-
-  <script src="app.js"></script>
+  <nav class="bottom-nav" aria-label="Navegação rápida">
+    <button type="button" class="bottom-nav-btn active" data-action="tab" data-id="diagnostico"><span>🎯</span>Foco</button>
+    <button type="button" class="bottom-nav-btn" data-action="tab" data-id="material"><span>📖</span>Material</button>
+    <button type="button" class="bottom-nav-btn" data-action="tab" data-id="flashcards"><span>🃏</span>Cards</button>
+    <button type="button" class="bottom-nav-btn" data-action="tab" data-id="simulado"><span>✍️</span>Simulado</button>
+    <button type="button" class="bottom-nav-btn" data-action="tab" data-id="anotacoes"><span>📝</span>Notas</button>
+    <button type="button" class="bottom-nav-btn" data-action="tab" data-id="gabarito"><span>✅</span>Gabarito</button>
+  </nav>
+</div>
+<div class="toast-container" id="toastContainer" aria-live="polite"></div>
 </body>
 </html>
