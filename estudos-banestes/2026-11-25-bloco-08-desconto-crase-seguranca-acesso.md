@@ -2,9 +2,10 @@
 
 **Data:** 25/11/2026 | **Eixo:** Técnico Bancário · Conhecimentos Gerais e Específicos
 
-## 1. Diagnóstico do foco
+## 1. DIAGNÓSTICO DO FOCO
 
-O foco é identificar o ponto exato de incidência de um cálculo, de uma preposição e de um controle de acesso.
+* **Tema escolhido:** Desconto, crase e segurança de acesso.
+* **Justificativa da escolha focada na FCC/Banestes:** O foco é identificar o ponto exato de incidência de um cálculo, de uma preposição e de um controle de acesso.
 
 | Questão | Peso | Disciplina | Tema |
 | --- | ---: | --- | --- |
@@ -20,85 +21,111 @@ O foco é identificar o ponto exato de incidência de um cálculo, de uma prepos
 - Referência de formato para casos, questões diretas e alternativas. A seleção dos temas segue prioridade didática. [Caderno FCC de Escriturário do Banco do Brasil, fevereiro de 2011](https://www.estudegratis.com.br/images/provas/20356-fcc-2011-banco-do-brasil-escriturario-prova.pdf).
 - [Banco Central — política monetária](https://www.bcb.gov.br/meubc/faqs/p/politicamonetariadobancocentral).
 
-## 2. Material de estudo
+* **4 Subtópicos:**
+    1. Desconto comercial simples.
+    2. Crase após verbo de encaminhamento.
+    3. Hardware, memória e persistência.
+    4. Decisões sobre crédito e encaminhamento de conflitos.
 
-### Desconto comercial simples
+## 2. MATERIAL DE ESTUDO
 
-No desconto comercial simples, D = Ndn e A = N − D, com N nominal, d taxa por período, n número de períodos e A líquido. O desconto racional simples usa A=N/(1+dn). Com N=1.000, d=4% e n=2, o desconto comercial é 80 e o líquido é 920.
+### 1. Conceitos essenciais
 
-### Crase após verbo de encaminhamento
+* **Desconto comercial simples** — No desconto comercial simples, D = Ndn e A = N − D, com N nominal, d taxa por período, n número de períodos e A líquido.
+* **Crase após verbo de encaminhamento** — Crase assinala fusão da preposição a com artigo feminino a/as ou com a inicial de certos demonstrativos, como aquele.
+* **Hardware, memória e persistência** — A RAM guarda dados de trabalho enquanto o equipamento tem energia.
+* **Transmissão de juros à demanda** — Uma alta da taxa básica pode elevar o custo do financiamento, moderando compras e investimentos sensíveis a juros.
+* **Mediação e critérios verificáveis** — Na mediação, organize os fatos e interesses, defina critério de solução verificável e combine responsáveis e prazos.
 
-Crase assinala fusão da preposição a com artigo feminino a/as ou com a inicial de certos demonstrativos, como aquele. Com substantivo masculino acompanhado de o, aparece ao. Antes de verbo no infinitivo, há apenas preposição. Em “encaminhar ao setor” e “encaminhar à unidade”, o destinatário pede preposição.
+### 2. Regras, classificações e exceções
 
-### Hardware, memória e persistência
+* **Desconto comercial simples** — O desconto racional simples usa A=N/(1+dn). Com N=1.000, d=4% e n=2, o desconto comercial é 80 e o líquido é 920.
+* **Crase após verbo de encaminhamento** — Com substantivo masculino acompanhado de o, aparece ao. Antes de verbo no infinitivo, há apenas preposição. Em “encaminhar ao setor” e “encaminhar à unidade”, o destinatário pede preposição.
+* **Hardware, memória e persistência** — O SSD armazena arquivos de modo persistente. O processador executa instruções. Se um editor não tiver gravação automática, uma mudança mantida apenas em RAM pode sumir numa queda de energia, embora a última versão salva no SSD continue disponível.
+* **Transmissão de juros à demanda** — Os efeitos ocorrem com defasagens e variam por modalidade e tomador. Um financiamento de longo prazo pode reagir também a expectativas e risco, portanto o repasse é heterogêneo.
+* **Mediação e critérios verificáveis** — Aplicar o mesmo critério a pedidos semelhantes ajuda a legitimar a solução. Reconhecer a frustração contribui, mas o acordo precisa de encaminhamento concreto.
 
-A RAM guarda dados de trabalho enquanto o equipamento tem energia. O SSD armazena arquivos de modo persistente. O processador executa instruções. Se um editor não tiver gravação automática, uma mudança mantida apenas em RAM pode sumir numa queda de energia, embora a última versão salva no SSD continue disponível.
+### 3. Exemplos práticos curtos
 
-### Transmissão de juros à demanda
+1. **Desconto comercial simples** — Um título de 2.000, com desconto comercial simples de 3% por mês durante dois meses, sofre desconto de 120 e libera 1.880. No racional simples, o líquido seria 2.000/1,06.
+2. **Crase após verbo de encaminhamento** — Em “Entregou a ficha à recepção e ao almoxarifado, antes de começar a conferir”, “à recepção” funde a preposição com o artigo feminino. “Ao” mostra a forma no masculino e “conferir” é infinitivo.
+3. **Hardware, memória e persistência** — Uma planilha salva às 14h é editada às 14h10, sem gravação automática. Se o computador desligar nesse intervalo, o arquivo às 14h continua no armazenamento íntegro, enquanto as edições que estavam na RAM se perdem.
+4. **Transmissão de juros à demanda** — Se novos empréstimos para veículos encarecem após aumento da taxa básica, algumas compras podem ser adiadas, mesmo que os contratos com taxa fixa já vigentes continuem nas condições pactuadas.
+5. **Mediação e critérios verificáveis** — Dois fornecedores pedem prioridade para o único horário até o almoço. Se o prazo comprovável é o critério, compare os documentos, aplique-o uniformemente e ofereça o próximo horário a quem puder aguardar.
 
-Uma alta da taxa básica pode elevar o custo do financiamento, moderando compras e investimentos sensíveis a juros. Os efeitos ocorrem com defasagens e variam por modalidade e tomador. Um financiamento de longo prazo pode reagir também a expectativas e risco, portanto o repasse é heterogêneo.
+### 4. Alertas de pegadinhas no estilo FCC
 
-### Mediação e critérios verificáveis
+* **Desconto comercial simples** — Identifique se a pergunta quer desconto ou líquido. No comercial simples, a taxa incide no valor nominal, sem reaplicação período a período sobre um saldo reduzido.
+* **Crase após verbo de encaminhamento** — Procure a preposição exigida e um artigo compatível. A presença de um “a” antes de infinitivo não autoriza o acento grave.
+* **Hardware, memória e persistência** — Abrir um documento não remove a versão persistente. O processador executa instruções, mas não torna persistente o conteúdo que o editor ainda não gravou.
+* **Transmissão de juros à demanda** — O canal estudado atua sobre novos financiamentos e decisões ao longo do tempo. A taxa básica não vira automaticamente a taxa de cada operação, nem produz uma queda instantânea no índice de preços.
+* **Mediação e critérios verificáveis** — Volume da reclamação, antiguidade e sorteio ignoram o critério disponível. Um encaminhamento deve explicar a escolha e indicar o passo seguinte para o pedido que ficou pendente.
 
-Na mediação, organize os fatos e interesses, defina critério de solução verificável e combine responsáveis e prazos. Aplicar o mesmo critério a pedidos semelhantes ajuda a legitimar a solução. Reconhecer a frustração contribui, mas o acordo precisa de encaminhamento concreto.
+### 5. Mnemônicos ou regras de retenção rápida
 
-## 3. Simulado FCC — 5 questões
+* **Desconto comercial simples** — No desconto comercial simples, aplique taxa e prazo ao nominal.
+* **Crase após verbo de encaminhamento** — Teste a troca pelo masculino e procure artigo antes de marcar crase.
+* **Hardware, memória e persistência** — Diferencie o estado em edição da última gravação persistente.
+* **Transmissão de juros à demanda** — A taxa básica influencia condições de crédito, e as condições influenciam a decisão de gastar.
+* **Mediação e critérios verificáveis** — Use evidência relevante para decidir e proponha alternativas para o que ficou pendente.
 
-### Questão 1 — Desconto comercial simples · Peso 2
+## 3. SIMULADO FCC — 5 QUESTÕES
+
+**Questão 1** — Desconto comercial simples · Peso 2
 
 Um título nominal de R$ 8.000 é antecipado em três meses por desconto comercial simples de 2% ao mês. Qual é o valor líquido, sem outras despesas?
 
-A) R$ 7.520
-B) R$ 7.547,17
-C) R$ 7.840
-D) R$ 7.529,54
-E) R$ 480
+a) R$ 7.520
+b) R$ 7.547,17
+c) R$ 7.840
+d) R$ 7.529,54
+e) R$ 480
 
-### Questão 2 — Crase após verbo de encaminhamento · Peso 1
+**Questão 2** — Crase após verbo de encaminhamento · Peso 1
 
 Complete “O parecer foi encaminhado ___ diretoria responsável e ___ setor de arquivo. A equipe começou ___ revisar os anexos.”
 
-A) a · ao · à
-B) à · ao · a
-C) à · ao · à
-D) à · à · a
-E) a · ao · a
+a) a · ao · à
+b) à · ao · a
+c) à · ao · à
+d) à · à · a
+e) a · ao · a
 
-### Questão 3 — Hardware, memória e persistência · Peso 2
+**Questão 3** — Hardware, memória e persistência · Peso 2
 
 Um analista abriu um relatório salvo no SSD e fez alterações em um editor sem salvamento automático. Uma queda de energia desligou o computador. Supondo que o SSD esteja íntegro, o que se espera encontrar após reiniciar?
 
-A) As alterações recentes são copiadas automaticamente do SSD para a RAM no reinício.
-B) O documento inteiro passa a existir apenas na RAM porque estava aberto.
-C) A versão salva desaparece e só as alterações recentes são recuperadas da RAM.
-D) A versão salva e todas as alterações permanecem porque o processador mantém os dados durante o desligamento.
-E) A última versão gravada permanece, e as alterações mantidas apenas na RAM foram perdidas.
+a) As alterações recentes são copiadas automaticamente do SSD para a RAM no reinício.
+b) O documento inteiro passa a existir apenas na RAM porque estava aberto.
+c) A versão salva desaparece e só as alterações recentes são recuperadas da RAM.
+d) A versão salva e todas as alterações permanecem porque o processador mantém os dados durante o desligamento.
+e) A última versão gravada permanece, e as alterações mantidas apenas na RAM foram perdidas.
 
-### Questão 4 — Transmissão de juros à demanda · Peso 1
+**Questão 4** — Transmissão de juros à demanda · Peso 1
 
 Mantidas as demais condições, a alta da taxa básica torna mais caros os novos financiamentos de bens duráveis. Qual efeito descreve o canal de transmissão em operação?
 
-A) A demanda cresce porque as prestações novas ficam mais pesadas.
-B) O índice de preços necessariamente cai no mesmo dia da decisão.
-C) Os novos empréstimos passam a ter juros idênticos à taxa básica.
-D) Parte dos consumidores adia compras financiadas, moderando a demanda ao longo do tempo.
-E) Todos os contratos vigentes passam imediatamente a pagar a mesma taxa nova.
+a) A demanda cresce porque as prestações novas ficam mais pesadas.
+b) O índice de preços necessariamente cai no mesmo dia da decisão.
+c) Os novos empréstimos passam a ter juros idênticos à taxa básica.
+d) Parte dos consumidores adia compras financiadas, moderando a demanda ao longo do tempo.
+e) Todos os contratos vigentes passam imediatamente a pagar a mesma taxa nova.
 
-### Questão 5 — Mediação e critérios verificáveis · Peso 2
+**Questão 5** — Mediação e critérios verificáveis · Peso 2
 
 Duas pessoas disputam o único horário de atendimento disponível hoje. Ambas alegam urgência. O serviço admite priorização pelo prazo documental, que pode ser comprovado. Qual abordagem preserva a imparcialidade e encaminha o conflito?
 
-A) Dar preferência à pessoa com relacionamento mais antigo.
-B) Dar preferência a quem reclamar com mais insistência.
-C) Sortear o horário antes de consultar os prazos.
-D) Reservar o horário para a primeira pessoa e anunciar que o caso da segunda foi resolvido.
-E) Escutar as duas, verificar os respectivos prazos, aplicar o critério e propor aos demais atendimentos alternativas viáveis.
+a) Dar preferência à pessoa com relacionamento mais antigo.
+b) Dar preferência a quem reclamar com mais insistência.
+c) Sortear o horário antes de consultar os prazos.
+d) Reservar o horário para a primeira pessoa e anunciar que o caso da segunda foi resolvido.
+e) Escutar as duas, verificar os respectivos prazos, aplicar o critério e propor aos demais atendimentos alternativas viáveis.
 
-## 4. Gabarito comentado
+**Gabarito Comentado**
 
 **Gabarito resumido** — 1 A · 2 B · 3 E · 4 D · 5 E
 
-### Questão 1 — Resposta: A
+**Questão 1 — Resposta: A**
 
 - **Alternativa correta — A)** D = 8.000×0,02×3 = 480. Logo, 8.000 − 480 = 7.520.
 - **B) Incorreta** — Divide o valor nominal por 1,06 e calcula o desconto racional simples.
@@ -107,7 +134,7 @@ E) Escutar as duas, verificar os respectivos prazos, aplicar o critério e propo
 - **E) Incorreta** — É a quantia descontada, sem subtraí-la do nominal.
 - **Regra de retenção** — No desconto comercial simples, aplique taxa e prazo ao nominal.
 
-### Questão 2 — Resposta: B
+**Questão 2 — Resposta: B**
 
 - **Alternativa correta — B)** A diretoria recebe a preposição e o artigo feminino, o setor recebe ao e revisar é infinitivo.
 - **A) Incorreta** — Omite a crase antes da diretoria e acrescenta indevidamente antes do infinitivo.
@@ -116,7 +143,7 @@ E) Escutar as duas, verificar os respectivos prazos, aplicar o critério e propo
 - **E) Incorreta** — Falta a fusão com o artigo da diretoria especificada.
 - **Regra de retenção** — Teste a troca pelo masculino e procure artigo antes de marcar crase.
 
-### Questão 3 — Resposta: E
+**Questão 3 — Resposta: E**
 
 - **Alternativa correta — E)** O SSD preserva a versão salva, enquanto a RAM perde os dados voláteis.
 - **A) Incorreta** — Sem gravação, o SSD não contém essas alterações.
@@ -125,7 +152,7 @@ E) Escutar as duas, verificar os respectivos prazos, aplicar o critério e propo
 - **D) Incorreta** — A execução pelo processador não torna as alterações persistentes.
 - **Regra de retenção** — Diferencie o estado em edição da última gravação persistente.
 
-### Questão 4 — Resposta: D
+**Questão 4 — Resposta: D**
 
 - **Alternativa correta — D)** O aumento do custo desestimula gastos sensíveis ao crédito, com efeito gradual.
 - **A) Incorreta** — Transpõe o efeito do custo na direção contrária à usual nesse canal.
@@ -134,7 +161,7 @@ E) Escutar as duas, verificar os respectivos prazos, aplicar o critério e propo
 - **E) Incorreta** — Os contratos têm condições distintas e o enunciado trata de novos financiamentos.
 - **Regra de retenção** — A taxa básica influencia condições de crédito, e as condições influenciam a decisão de gastar.
 
-### Questão 5 — Resposta: E
+**Questão 5 — Resposta: E**
 
 - **Alternativa correta — E)** Combina o critério verificável com escuta e encaminhamento aos envolvidos.
 - **A) Incorreta** — Tempo de relacionamento não demonstra urgência documental.

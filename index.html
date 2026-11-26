@@ -194,6 +194,11 @@
               5. Gabarito
             </button>
           </nav>
+          <nav class="study-actions study-navigation" aria-label="Ferramentas de estudo">
+            <button type="button" class="btn btn-xs" data-study-tab="revisao" aria-pressed="false">Revisar hoje</button>
+            <button type="button" class="btn btn-xs" data-study-tab="edital" aria-pressed="false">Edital e desempenho</button>
+            <button type="button" class="btn btn-xs" data-study-tab="prova" aria-pressed="false">Prova completa</button>
+          </nav>
 
           <!-- ABA 1: DIAGNÓSTICO -->
           <section id="panel-diagnostico" class="panel active" role="tabpanel"></section>
@@ -297,6 +302,27 @@
 
           <!-- ABA 5: GABARITO COMENTADO -->
           <section id="panel-gabarito" class="panel" role="tabpanel"></section>
+          <section id="panel-revisao" class="panel" aria-labelledby="reviewHeading">
+            <div class="card">
+              <h2 id="reviewHeading">Revisão</h2>
+              <p id="reviewCount" aria-live="polite"></p>
+              <div class="study-actions">
+                <label>Fila <select id="reviewMode"><option value="due">Revisar hoje</option><option value="errors">Caderno de erros</option></select></label>
+                <label>Disciplina <select id="reviewSubject"></select></label>
+              </div>
+            </div>
+            <div id="reviewQuestion"></div>
+          </section>
+          <section id="panel-edital" class="panel" aria-labelledby="coverageHeading">
+            <div class="card">
+              <h2 id="coverageHeading">Edital e desempenho</h2>
+              <p>Confira a distribuição da prova, os temas do acervo e seu progresso nas primeiras tentativas e revisões.</p>
+            </div>
+            <div id="coverageContent"></div>
+          </section>
+          <section id="panel-prova" class="panel" aria-label="Prova completa">
+            <div id="fullExamContent"></div>
+          </section>
         </div>
       </main>
     </div>
@@ -329,6 +355,7 @@
   <!-- CONTAINER DE NOTIFICAÇÕES -->
   <div class="toast-container" id="toastContainer" aria-live="polite"></div>
 
+  <script src="study-tools.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

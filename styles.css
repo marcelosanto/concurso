@@ -873,6 +873,23 @@ body.focus-mode .workspace {
   color: var(--text-accent);
 }
 
+.md-table {
+  overflow-x: auto;
+  margin-block: 0.75rem;
+}
+
+.md-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.md-table th,
+.md-table td {
+  padding: 0.5rem;
+  border-bottom: 1px solid currentColor;
+  text-align: left;
+}
+
 .md-content p {
   margin: 0 0 10px;
   color: var(--text-secondary);
@@ -1370,4 +1387,47 @@ body.focus-mode .workspace {
     right: 20px;
     left: auto;
   }
+}
+
+.study-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.study-navigation {
+  margin-block: 0.75rem 1rem;
+}
+
+.study-navigation [aria-pressed="true"] {
+  border-color: currentColor;
+  font-weight: 700;
+}
+
+.study-actions select,
+.study-confidence select {
+  font: inherit;
+  padding: 0.35rem;
+  color: inherit;
+  background: var(--bg-surface);
+  border: 1px solid currentColor;
+  border-radius: 0.35rem;
+}
+
+.study-confidence {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 0.75rem;
+}
+
+.coverage-item summary {
+  cursor: pointer;
+}
+
+.coverage-item summary span {
+  display: inline-block;
+  margin-inline-start: 0.5rem;
 }

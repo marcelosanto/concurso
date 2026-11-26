@@ -2,9 +2,10 @@
 
 **Data:** 25/11/2026 | **Eixo:** Técnico Bancário · Conhecimentos Gerais e Específicos
 
-## 1. Diagnóstico do foco
+## 1. DIAGNÓSTICO DO FOCO
 
-O fechamento do rodízio usa condições dadas para comparar projetos, interpretar dados e construir opções de negociação.
+* **Tema escolhido:** Fluxos líquidos, leitura digital e negociação.
+* **Justificativa da escolha focada na FCC/Banestes:** O fechamento do rodízio usa condições dadas para comparar projetos, interpretar dados e construir opções de negociação.
 
 | Questão | Peso | Disciplina | Tema |
 | --- | ---: | --- | --- |
@@ -19,85 +20,111 @@ O fechamento do rodízio usa condições dadas para comparar projetos, interpret
 - Enquadramento das disciplinas e pesos pelo item 8.1 e pelo Anexo IV. [Edital nº 01/2026 do Banestes com as duas retificações](https://banestes.com.br/publicacoes_legais/editais_concurso/2026/concurso2026-banestes-edital-abertura-retificado-01_2026.pdf).
 - Referência de formato para casos, questões diretas e alternativas. A seleção dos temas segue prioridade didática. [Caderno FCC de Escriturário do Banco do Brasil, fevereiro de 2011](https://www.estudegratis.com.br/images/provas/20356-fcc-2011-banco-do-brasil-escriturario-prova.pdf).
 
-## 2. Material de estudo
+* **4 Subtópicos:**
+    1. Valor presente líquido de fluxos desiguais.
+    2. Leitura de porcentagem em gráfico de setores.
+    3. Referência absoluta em planilhas.
+    4. Custos de importação e condições do acordo.
 
-### Valor presente líquido de fluxos desiguais
+## 2. MATERIAL DE ESTUDO
 
-VPL soma fluxos líquidos descontados a uma data, incluindo desembolso inicial negativo. Para taxa i, cada fluxo Fₜ contribui com Fₜ/(1+i)ᵗ. A 10%, desembolsar 180 hoje para receber 110 e 121 nos dois fins de período gera VPL 20.
+### 1. Conceitos essenciais
 
-### Leitura de porcentagem em gráfico de setores
+* **Valor presente líquido de fluxos desiguais** — VPL soma fluxos líquidos descontados a uma data, incluindo desembolso inicial negativo.
+* **Leitura de porcentagem em gráfico de setores** — No gráfico de setores, p% corresponde a p/100 do total.
+* **Referência absoluta em planilhas** — Referência relativa muda ao copiar uma fórmula.
+* **Câmbio e custo de importação** — Com produto cotado em dólar, seu custo em reais é o preço em dólar multiplicado pela taxa em reais por dólar.
+* **Concessão condicionada em negociação** — Uma concessão condicionada liga a mudança proposta a uma contrapartida que viabiliza o acordo.
 
-No gráfico de setores, p% corresponde a p/100 do total. O mesmo setor percentual pode representar diferentes números absolutos quando os totais mudam. Por exemplo, 20% de 100 é 20, enquanto 15% de 200 é 30.
+### 2. Regras, classificações e exceções
 
-### Referência absoluta em planilhas
+* **Valor presente líquido de fluxos desiguais** — Para taxa i, cada fluxo Fₜ contribui com Fₜ/(1+i)ᵗ. A 10%, desembolsar 180 hoje para receber 110 e 121 nos dois fins de período gera VPL 20.
+* **Leitura de porcentagem em gráfico de setores** — O mesmo setor percentual pode representar diferentes números absolutos quando os totais mudam. Por exemplo, 20% de 100 é 20, enquanto 15% de 200 é 30.
+* **Referência absoluta em planilhas** — O cifrão fixa a coordenada que antecede, como em $A$1, que fixa coluna e linha. Ao copiar só para baixo, A$1 também fixa a linha, mas a coluna pode mudar se a cópia for horizontal. Exemplo, =$D$1*C3, copiada uma linha abaixo, vira =$D$1*C4.
+* **Câmbio e custo de importação** — Depreciação do real aumenta essa taxa. O repasse ao preço final depende de estoque, margens, proteção cambial e outros componentes. Um preço de US$ 10 a R$ 5 por dólar representa R$ 50.
+* **Concessão condicionada em negociação** — Exemplo, “Podemos adiantar a entrega se recebermos a aprovação hoje”. A condição deve ser verificável e compatível com a autoridade do negociador. Prometer benefício antes de confirmar a condição cria expectativa sem compromisso recíproco.
 
-Referência relativa muda ao copiar uma fórmula. O cifrão fixa a coordenada que antecede, como em $A$1, que fixa coluna e linha. Ao copiar só para baixo, A$1 também fixa a linha, mas a coluna pode mudar se a cópia for horizontal. Exemplo, =$D$1*C3, copiada uma linha abaixo, vira =$D$1*C4.
+### 3. Exemplos práticos curtos
 
-### Câmbio e custo de importação
+1. **Valor presente líquido de fluxos desiguais** — Com taxa de 5%, um projeto custa 1.000 agora e paga 420 no mês 1 e 661,50 no mês 2. Os valores presentes são 400 e 600. O VPL é zero, pois a soma das entradas iguala o desembolso.
+2. **Leitura de porcentagem em gráfico de setores** — Um setor cai de 40% de 250 registros para 30% de 400. Sua participação diminui 10 pontos percentuais, mas sua quantidade sobe de 100 para 120.
+3. **Referência absoluta em planilhas** — Copiar a fórmula `=C4*$H$2` uma linha abaixo produz `=C5*$H$2`. Uma cópia à direita produz `=D4*$H$2`. Com `H$2`, apenas a linha fica fixa.
+4. **Câmbio e custo de importação** — Um item de US$ 80 custa R$ 400 a câmbio de R$ 5 por dólar e R$ 440 com câmbio de R$ 5,50. Isso aumenta o custo direto em 10%. Se a loja já tem estoque ou muda a margem, o preço final pode mudar de outra forma.
+5. **Concessão condicionada em negociação** — “Se a aprovação chegar pelo protocolo até o meio-dia, entregaremos a versão revisada às 16h.” A frase fixa a condição, o meio de comprovação e o benefício.
 
-Com produto cotado em dólar, seu custo em reais é o preço em dólar multiplicado pela taxa em reais por dólar. Depreciação do real aumenta essa taxa. O repasse ao preço final depende de estoque, margens, proteção cambial e outros componentes. Um preço de US$ 10 a R$ 5 por dólar representa R$ 50.
+### 4. Alertas de pegadinhas no estilo FCC
 
-### Concessão condicionada em negociação
+* **Valor presente líquido de fluxos desiguais** — Cada entrada tem expoente igual ao seu prazo. O VPL inclui o investimento inicial com sinal negativo. A soma descontada das entradas, isoladamente, ainda não é VPL.
+* **Leitura de porcentagem em gráfico de setores** — Converter a fatia em quantidade exige o total do mesmo período. Uma diferença em pontos percentuais não equivale à queda relativa em porcentagem.
+* **Referência absoluta em planilhas** — Leia cifrões um por um. Referência totalmente relativa se move, referência mista fixa uma coordenada e a absoluta fixa as duas.
+* **Câmbio e custo de importação** — A variação relativa compara a diferença com a cotação inicial. A conversão do custo, dada a cotação, não determina quanto será repassado ao consumidor.
+* **Concessão condicionada em negociação** — Uma condição vaga não pode ser verificada. Uma promessa incondicional pode descumprir a restrição operacional. Um pedido de tarefa sem benefício associado não fecha a troca.
 
-Uma concessão condicionada liga a mudança proposta a uma contrapartida que viabiliza o acordo. Exemplo, “Podemos adiantar a entrega se recebermos a aprovação hoje”. A condição deve ser verificável e compatível com a autoridade do negociador. Prometer benefício antes de confirmar a condição cria expectativa sem compromisso recíproco.
+### 5. Mnemônicos ou regras de retenção rápida
 
-## 3. Simulado FCC — 5 questões
+* **Valor presente líquido de fluxos desiguais** — Desconte cada fluxo pelo seu próprio prazo antes de subtrair o aporte inicial.
+* **Leitura de porcentagem em gráfico de setores** — Converta cada participação usando o total do período correspondente.
+* **Referência absoluta em planilhas** — Use cifrão antes da coordenada que deve permanecer fixa.
+* **Câmbio e custo de importação** — Calcule o custo convertido e analise o repasse como etapa distinta.
+* **Concessão condicionada em negociação** — Vincule cada concessão a condição e prazo que as partes possam confirmar.
 
-### Questão 1 — Valor presente líquido de fluxos desiguais · Peso 2
+## 3. SIMULADO FCC — 5 QUESTÕES
+
+**Questão 1** — Valor presente líquido de fluxos desiguais · Peso 2
 
 Um projeto custa R$ 950 hoje e paga R$ 550 ao fim do primeiro mês e R$ 605 ao fim do segundo. À taxa de 10% ao mês, qual é seu VPL?
 
-A) R$ 205.
-B) R$ 100.
-C) R$ 50.
-D) −R$ 450.
-E) R$ 1.000.
+a) R$ 205.
+b) R$ 100.
+c) R$ 50.
+d) −R$ 450.
+e) R$ 1.000.
 
-### Questão 2 — Leitura de porcentagem em gráfico de setores · Peso 1
+**Questão 2** — Leitura de porcentagem em gráfico de setores · Peso 1
 
 Uma categoria passou de 35% de 200 registros em abril para 25% de 320 registros em maio. O que aconteceu com sua participação e sua contagem?
 
-A) A participação caiu 10 pontos percentuais e a contagem subiu de 70 para 80.
-B) A participação caiu 10 pontos e a contagem caiu de 112 para 80.
-C) A participação subiu 10 pontos percentuais e a contagem subiu 10.
-D) A participação caiu 10% em relação à de abril e a contagem ficou estável.
-E) A participação caiu 10 pontos e a contagem caiu de 70 para 50.
+a) A participação caiu 10 pontos percentuais e a contagem subiu de 70 para 80.
+b) A participação caiu 10 pontos e a contagem caiu de 112 para 80.
+c) A participação subiu 10 pontos percentuais e a contagem subiu 10.
+d) A participação caiu 10% em relação à de abril e a contagem ficou estável.
+e) A participação caiu 10 pontos e a contagem caiu de 70 para 50.
 
-### Questão 3 — Referência absoluta em planilhas · Peso 2
+**Questão 3** — Referência absoluta em planilhas · Peso 2
 
 A célula B2 deve multiplicar A2 pelo fator em F1. A fórmula será copiada para B3:B8, e a especificação pede fixar linha e coluna do fator para futuras cópias horizontais. Qual fórmula atende aos requisitos?
 
-A) =A$2*$F1
-B) =$A$2*$F$1
-C) =A2*$F$1
-D) =A2*F$1
-E) =A2*F1
+a) =A$2*$F1
+b) =$A$2*$F$1
+c) =A2*$F$1
+d) =A2*F$1
+e) =A2*F1
 
-### Questão 4 — Câmbio e custo de importação · Peso 1
+**Questão 4** — Câmbio e custo de importação · Peso 1
 
 O real se deprecia, de R$ 5,00 para R$ 5,50 por dólar. Um equipamento tem preço fixo de US$ 200 no exterior. Qual conclusão sobre seu custo direto em reais e sobre o preço ao consumidor é válida?
 
-A) O preço final obrigatoriamente aumenta 10%, qualquer que seja sua composição.
-B) O custo não varia porque o valor em dólar é fixo.
-C) O custo direto cai 10% porque o real se depreciou.
-D) O custo direto sobe 10%, e o preço final pode variar em proporção diferente.
-E) O custo direto sobe 5%, porque a diferença entre as cotações é 0,50.
+a) O preço final obrigatoriamente aumenta 10%, qualquer que seja sua composição.
+b) O custo não varia porque o valor em dólar é fixo.
+c) O custo direto cai 10% porque o real se depreciou.
+d) O custo direto sobe 10%, e o preço final pode variar em proporção diferente.
+e) O custo direto sobe 5%, porque a diferença entre as cotações é 0,50.
 
-### Questão 5 — Concessão condicionada em negociação · Peso 2
+**Questão 5** — Concessão condicionada em negociação · Peso 2
 
 Uma equipe pode antecipar uma revisão se o solicitante entregar até hoje os documentos faltantes. Qual formulação torna a concessão condicionada explícita e verificável?
 
-A) “A revisão ficará para a próxima semana mesmo com entrega completa hoje.”
-B) “Se a documentação completa chegar até as 17h de hoje, anteciparemos a revisão para amanhã.”
-C) “Vamos revisar amanhã de qualquer forma. Envie os documentos quando puder.”
-D) “Talvez seja possível antecipar, dependendo de muita coisa.”
-E) “Envie os documentos hoje e depois veremos se há algum benefício.”
+a) “A revisão ficará para a próxima semana mesmo com entrega completa hoje.”
+b) “Se a documentação completa chegar até as 17h de hoje, anteciparemos a revisão para amanhã.”
+c) “Vamos revisar amanhã de qualquer forma. Envie os documentos quando puder.”
+d) “Talvez seja possível antecipar, dependendo de muita coisa.”
+e) “Envie os documentos hoje e depois veremos se há algum benefício.”
 
-## 4. Gabarito comentado
+**Gabarito Comentado**
 
 **Gabarito resumido** — 1 C · 2 A · 3 C · 4 D · 5 B
 
-### Questão 1 — Resposta: C
+**Questão 1 — Resposta: C**
 
 - **Alternativa correta — C)** 550/1,10=500 e 605/1,21=500. A soma dos presentes menos 950 dá 50.
 - **A) Incorreta** — Subtrai 950 da soma nominal de 1.155, misturando datas.
@@ -106,7 +133,7 @@ E) “Envie os documentos hoje e depois veremos se há algum benefício.”
 - **E) Incorreta** — É a soma das entradas descontadas, antes do desembolso inicial.
 - **Regra de retenção** — Desconte cada fluxo pelo seu próprio prazo antes de subtrair o aporte inicial.
 
-### Questão 2 — Resposta: A
+**Questão 2 — Resposta: A**
 
 - **Alternativa correta — A)** Calculam-se 0,35×200=70 e 0,25×320=80. A diferença entre proporções é 10 pontos.
 - **B) Incorreta** — 112 resulta da aplicação indevida de 35% à base de maio.
@@ -115,7 +142,7 @@ E) “Envie os documentos hoje e depois veremos se há algum benefício.”
 - **E) Incorreta** — 50 usa a base de abril para a proporção de maio.
 - **Regra de retenção** — Converta cada participação usando o total do período correspondente.
 
-### Questão 3 — Resposta: C
+**Questão 3 — Resposta: C**
 
 - **Alternativa correta — C)** A parcela A acompanha a linha, enquanto coluna F e linha 1 permanecem fixas.
 - **A) Incorreta** — Fixa a linha da parcela e deixa a linha do fator mudar.
@@ -124,7 +151,7 @@ E) “Envie os documentos hoje e depois veremos se há algum benefício.”
 - **E) Incorreta** — As duas referências se deslocam em cópias verticais.
 - **Regra de retenção** — Use cifrão antes da coordenada que deve permanecer fixa.
 
-### Questão 4 — Resposta: D
+**Questão 4 — Resposta: D**
 
 - **Alternativa correta — D)** O custo vai de 1.000 a 1.100. O repasse depende da composição de custos e da margem.
 - **A) Incorreta** — Identifica o aumento do custo direto, mas supõe repasse integral e automático.
@@ -133,7 +160,7 @@ E) “Envie os documentos hoje e depois veremos se há algum benefício.”
 - **E) Incorreta** — A taxa relativa divide 0,50 por 5,00, resultando em 10%.
 - **Regra de retenção** — Calcule o custo convertido e analise o repasse como etapa distinta.
 
-### Questão 5 — Resposta: B
+**Questão 5 — Resposta: B**
 
 - **Alternativa correta — B)** Define a contrapartida, o prazo verificável e o benefício associado.
 - **A) Incorreta** — Descarta a possibilidade de concessão informada.

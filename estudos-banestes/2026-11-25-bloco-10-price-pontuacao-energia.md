@@ -2,9 +2,10 @@
 
 **Data:** 25/11/2026 | **Eixo:** Técnico Bancário · Conhecimentos Gerais e Específicos
 
-## 1. Diagnóstico do foco
+## 1. DIAGNÓSTICO DO FOCO
 
-O bloco reúne situações em que um detalhe de estrutura altera a leitura do resultado, da frase ou do indicador.
+* **Tema escolhido:** Amortização Price, pontuação e energia.
+* **Justificativa da escolha focada na FCC/Banestes:** O bloco reúne situações em que um detalhe de estrutura altera a leitura do resultado, da frase ou do indicador.
 
 | Questão | Peso | Disciplina | Tema |
 | --- | ---: | --- | --- |
@@ -19,85 +20,111 @@ O bloco reúne situações em que um detalhe de estrutura altera a leitura do re
 - Enquadramento das disciplinas e pesos pelo item 8.1 e pelo Anexo IV. [Edital nº 01/2026 do Banestes com as duas retificações](https://banestes.com.br/publicacoes_legais/editais_concurso/2026/concurso2026-banestes-edital-abertura-retificado-01_2026.pdf).
 - Referência de formato para casos, questões diretas e alternativas. A seleção dos temas segue prioridade didática. [Caderno FCC de Escriturário do Banco do Brasil, fevereiro de 2011](https://www.estudegratis.com.br/images/provas/20356-fcc-2011-banco-do-brasil-escriturario-prova.pdf).
 
-## 2. Material de estudo
+* **4 Subtópicos:**
+    1. Composição da prestação no sistema Price.
+    2. Oração relativa restritiva e explicativa.
+    3. Escore padronizado na distribuição normal.
+    4. Consumo por atendimento e recuperação do serviço.
 
-### Composição da prestação no sistema Price
+## 2. MATERIAL DE ESTUDO
 
-No Price a taxa fixa, as prestações são constantes, os juros diminuem com o saldo e a amortização aumenta. Em cada período, J=i×saldo anterior e amortização = prestação − J. Exemplo, com saldo 1.000, prestação 300 e taxa 5%, pagam-se 50 de juros e amortizam-se 250.
+### 1. Conceitos essenciais
 
-### Oração relativa restritiva e explicativa
+* **Composição da prestação no sistema Price** — No Price a taxa fixa, as prestações são constantes, os juros diminuem com o saldo e a amortização aumenta.
+* **Oração relativa restritiva e explicativa** — Sem vírgulas, a oração relativa restritiva delimita o grupo.
+* **Escore padronizado na distribuição normal** — Na normal, z=(x−μ)/σ mede a distância à média μ em desvios padrão σ.
+* **Materialidade de consumo de energia** — Um indicador ambiental de intensidade pode usar energia total dividida pelo volume de atividade.
+* **Recuperação de serviço e prazo de retorno** — Quando uma falha é identificada, a recuperação de serviço inclui reconhecer o impacto, registrar o caso, iniciar a correção e combinar prazo realista de retorno.
 
-Sem vírgulas, a oração relativa restritiva delimita o grupo. Com vírgulas, a explicativa acrescenta informação ao grupo inteiro mencionado. “Os relatórios que continham gráficos foram revisados” seleciona um subconjunto. Se a oração estiver entre vírgulas, todos os relatórios referidos contêm gráficos.
+### 2. Regras, classificações e exceções
 
-### Escore padronizado na distribuição normal
+* **Composição da prestação no sistema Price** — Em cada período, J=i×saldo anterior e amortização = prestação − J. Exemplo, com saldo 1.000, prestação 300 e taxa 5%, pagam-se 50 de juros e amortizam-se 250.
+* **Oração relativa restritiva e explicativa** — Com vírgulas, a explicativa acrescenta informação ao grupo inteiro mencionado. “Os relatórios que continham gráficos foram revisados” seleciona um subconjunto. Se a oração estiver entre vírgulas, todos os relatórios referidos contêm gráficos.
+* **Escore padronizado na distribuição normal** — Pela simetria, valores com escores opostos deixam probabilidades iguais nas caudas externas respectivas. Exemplo, média 50 e desvio 5 dão z=−2 em 40 e z=2 em 60.
+* **Materialidade de consumo de energia** — Comparar intensidade ajuda a avaliar eficiência por unidade, enquanto consumo absoluto mede a carga total. Exemplo, 100 kWh para 20 serviços são 5 kWh por serviço, e 120 para 40 são 3, apesar de o total subir.
+* **Recuperação de serviço e prazo de retorno** — Um horário de atualização pode ser assumido mesmo sem saber a data final de solução. O retorno deve ocorrer ainda que a apuração continue.
 
-Na normal, z=(x−μ)/σ mede a distância à média μ em desvios padrão σ. Pela simetria, valores com escores opostos deixam probabilidades iguais nas caudas externas respectivas. Exemplo, média 50 e desvio 5 dão z=−2 em 40 e z=2 em 60.
+### 3. Exemplos práticos curtos
 
-### Materialidade de consumo de energia
+1. **Composição da prestação no sistema Price** — Um saldo de 2.000, prestação de 530 e taxa de 2% geram juros de 40 e amortização de 490. O saldo após o pagamento é 1.510.
+2. **Oração relativa restritiva e explicativa** — “As pastas que estavam sem rótulo foram separadas” recorta um grupo. “As pastas, que estavam sem rótulo, foram separadas” atribui a característica a todas as pastas referidas.
+3. **Escore padronizado na distribuição normal** — Numa normal centrada em 100 com desvio 10, a área abaixo de 85 é igual à área acima de 115. Os pontos ficam a 1,5 desvio da média, em lados opostos.
+4. **Materialidade de consumo de energia** — Um posto consumia 140 kWh para 20 operações e passou a 150 kWh para 30. O consumo total sobe 10 kWh e a intensidade cai de 7 para 5 kWh por operação.
+5. **Recuperação de serviço e prazo de retorno** — Uma falha de cadastro depende de análise em outro setor. A atendente confirma que abriu o caso e agenda retorno às 16h, inclusive se só puder relatar o andamento.
 
-Um indicador ambiental de intensidade pode usar energia total dividida pelo volume de atividade. Comparar intensidade ajuda a avaliar eficiência por unidade, enquanto consumo absoluto mede a carga total. Exemplo, 100 kWh para 20 serviços são 5 kWh por serviço, e 120 para 40 são 3, apesar de o total subir.
+### 4. Alertas de pegadinhas no estilo FCC
 
-### Recuperação de serviço e prazo de retorno
+* **Composição da prestação no sistema Price** — A prestação inclui juros. Subtraia do saldo apenas a amortização ou, de modo equivalente, some juros ao saldo e depois subtraia a prestação inteira.
+* **Oração relativa restritiva e explicativa** — Retirar ou pôr vírgulas pode mudar o grupo descrito, mesmo quando o sujeito e o predicado principal permanecem iguais.
+* **Escore padronizado na distribuição normal** — A distância à média determina a cauda. O centro separa metades. Escolher um ponto abaixo da média para a cauda direita produz área maior que metade.
+* **Materialidade de consumo de energia** — O total mede carga ambiental. A razão por unidade mede intensidade. Pode haver melhora relativa sem queda absoluta, se o volume atendido aumentar.
+* **Recuperação de serviço e prazo de retorno** — Um prazo de atualização pode ser realista quando o de solução ainda é incerto. Trocar status do protocolo não comprova correção técnica.
 
-Quando uma falha é identificada, a recuperação de serviço inclui reconhecer o impacto, registrar o caso, iniciar a correção e combinar prazo realista de retorno. Um horário de atualização pode ser assumido mesmo sem saber a data final de solução. O retorno deve ocorrer ainda que a apuração continue.
+### 5. Mnemônicos ou regras de retenção rápida
 
-## 3. Simulado FCC — 5 questões
+* **Composição da prestação no sistema Price** — Separe os juros antes de calcular quanto da prestação reduz o saldo.
+* **Oração relativa restritiva e explicativa** — Vírgulas podem mudar o conjunto ao qual uma propriedade se aplica.
+* **Escore padronizado na distribuição normal** — Na normal, espelhe o ponto pela média para trocar de cauda.
+* **Materialidade de consumo de energia** — Declare o denominador ao avaliar a intensidade de um impacto ambiental.
+* **Recuperação de serviço e prazo de retorno** — Combine uma atualização verificável quando o prazo da solução ainda é incerto.
 
-### Questão 1 — Composição da prestação no sistema Price · Peso 2
+## 3. SIMULADO FCC — 5 QUESTÕES
+
+**Questão 1** — Composição da prestação no sistema Price · Peso 2
 
 No início do mês, o saldo de um financiamento Price é R$ 5.000. A prestação do mês é R$ 1.320 e a taxa é 4% ao mês. Sem outros encargos, qual saldo sobra logo após o pagamento?
 
-A) R$ 3.880
-B) R$ 4.080
-C) R$ 3.680
-D) R$ 1.120
-E) R$ 4.800
+a) R$ 3.880
+b) R$ 4.080
+c) R$ 3.680
+d) R$ 1.120
+e) R$ 4.800
 
-### Questão 2 — Oração relativa restritiva e explicativa · Peso 1
+**Questão 2** — Oração relativa restritiva e explicativa · Peso 1
 
 Um aviso mudou de “Os relatórios que estavam incompletos foram devolvidos” para “Os relatórios, que estavam incompletos, foram devolvidos”. O que passa a constar na segunda versão?
 
-A) A segunda versão deixa de afirmar a devolução.
-B) Todos os relatórios referidos estavam incompletos e foram devolvidos.
-C) Apenas os relatórios incompletos foram devolvidos.
-D) Nenhum relatório estava incompleto.
-E) Apenas os relatórios completos foram devolvidos.
+a) A segunda versão deixa de afirmar a devolução.
+b) Todos os relatórios referidos estavam incompletos e foram devolvidos.
+c) Apenas os relatórios incompletos foram devolvidos.
+d) Nenhum relatório estava incompleto.
+e) Apenas os relatórios completos foram devolvidos.
 
-### Questão 3 — Escore padronizado na distribuição normal · Peso 2
+**Questão 3** — Escore padronizado na distribuição normal · Peso 2
 
 O tempo de uma operação tem distribuição normal de média 30 e desvio padrão 4 minutos. A chance de ficar abaixo de 24 minutos é igual à de ultrapassar qual tempo?
 
-A) 30 minutos.
-B) 26 minutos.
-C) 38 minutos.
-D) 34 minutos.
-E) 36 minutos.
+a) 30 minutos.
+b) 26 minutos.
+c) 38 minutos.
+d) 34 minutos.
+e) 36 minutos.
 
-### Questão 4 — Materialidade de consumo de energia · Peso 1
+**Questão 4** — Materialidade de consumo de energia · Peso 1
 
 Um prédio passou de 900 kWh para 1.000 kWh no mês, enquanto o volume passou de 300 para 400 atendimentos. O que ocorreu com o consumo absoluto e com o consumo por atendimento?
 
-A) O absoluto subiu e a intensidade caiu de 3 para 2,5 kWh por atendimento.
-B) O absoluto subiu, e a intensidade ficou em 3 kWh por atendimento.
-C) Ambos subiram, pois o medidor mensal registrou mais kWh.
-D) Ambos caíram, pois houve mais atendimentos por kWh.
-E) O absoluto subiu, e a intensidade subiu de 2,5 para 3 kWh por atendimento.
+a) O absoluto subiu e a intensidade caiu de 3 para 2,5 kWh por atendimento.
+b) O absoluto subiu, e a intensidade ficou em 3 kWh por atendimento.
+c) Ambos subiram, pois o medidor mensal registrou mais kWh.
+d) Ambos caíram, pois houve mais atendimentos por kWh.
+e) O absoluto subiu, e a intensidade subiu de 2,5 para 3 kWh por atendimento.
 
-### Questão 5 — Recuperação de serviço e prazo de retorno · Peso 2
+**Questão 5** — Recuperação de serviço e prazo de retorno · Peso 2
 
 Um atendimento eletrônico registrou duas vezes um pedido. A correção depende de equipe que só responde à tarde. Qual resposta oferece acompanhamento sem prometer solução incerta?
 
-A) Aguardar conclusão técnica para só então mencionar a duplicidade.
-B) Garantir eliminação da duplicidade em dez minutos.
-C) Encerrar um dos protocolos e afirmar que isso corrige toda a duplicidade.
-D) Reconhecer a duplicidade, registrar o caso e marcar uma atualização à tarde mesmo se a correção estiver em andamento.
-E) Pedir que o cliente volte quando tiver tempo e encerrar o contato.
+a) Aguardar conclusão técnica para só então mencionar a duplicidade.
+b) Garantir eliminação da duplicidade em dez minutos.
+c) Encerrar um dos protocolos e afirmar que isso corrige toda a duplicidade.
+d) Reconhecer a duplicidade, registrar o caso e marcar uma atualização à tarde mesmo se a correção estiver em andamento.
+e) Pedir que o cliente volte quando tiver tempo e encerrar o contato.
 
-## 4. Gabarito comentado
+**Gabarito Comentado**
 
 **Gabarito resumido** — 1 A · 2 B · 3 E · 4 A · 5 D
 
-### Questão 1 — Resposta: A
+**Questão 1 — Resposta: A**
 
 - **Alternativa correta — A)** Os juros são 200, a amortização é 1.120 e o saldo passa a 3.880.
 - **B) Incorreta** — Soma os juros duas vezes, obtendo 5.000−1.320+200+200.
@@ -106,7 +133,7 @@ E) Pedir que o cliente volte quando tiver tempo e encerrar o contato.
 - **E) Incorreta** — Abate apenas os juros, como se eles amortizassem o saldo.
 - **Regra de retenção** — Separe os juros antes de calcular quanto da prestação reduz o saldo.
 
-### Questão 2 — Resposta: B
+**Questão 2 — Resposta: B**
 
 - **Alternativa correta — B)** A oração explicativa atribui a incompletude ao grupo todo.
 - **A) Incorreta** — “Foram devolvidos” continua sendo o predicado principal.
@@ -115,7 +142,7 @@ E) Pedir que o cliente volte quando tiver tempo e encerrar o contato.
 - **E) Incorreta** — O adjetivo da oração indica incompletude.
 - **Regra de retenção** — Vírgulas podem mudar o conjunto ao qual uma propriedade se aplica.
 
-### Questão 3 — Resposta: E
+**Questão 3 — Resposta: E**
 
 - **Alternativa correta — E)** 24 tem z=−1,5, e 36 tem z=+1,5. As caudas correspondentes têm a mesma área.
 - **A) Incorreta** — A média divide a probabilidade em metades, enquanto a cauda abaixo de 24 é menor.
@@ -124,7 +151,7 @@ E) Pedir que o cliente volte quando tiver tempo e encerrar o contato.
 - **D) Incorreta** — Fica a apenas um desvio padrão acima da média.
 - **Regra de retenção** — Na normal, espelhe o ponto pela média para trocar de cauda.
 
-### Questão 4 — Resposta: A
+**Questão 4 — Resposta: A**
 
 - **Alternativa correta — A)** Os totais aumentam em 100 kWh e os quocientes são 900/300 e 1.000/400.
 - **B) Incorreta** — Manter intensidade 3 com 400 atendimentos exigiria gastar 1.200 kWh.
@@ -133,7 +160,7 @@ E) Pedir que o cliente volte quando tiver tempo e encerrar o contato.
 - **E) Incorreta** — Troca os valores inicial e final dos quocientes.
 - **Regra de retenção** — Declare o denominador ao avaliar a intensidade de um impacto ambiental.
 
-### Questão 5 — Resposta: D
+**Questão 5 — Resposta: D**
 
 - **Alternativa correta — D)** A resposta assume um prazo de comunicação viável e deixa o prazo técnico em aberto.
 - **A) Incorreta** — Atrasa o reconhecimento de uma falha já confirmada.

@@ -17,6 +17,7 @@ let state = {
   editingNoteId: null,
   githubRepoSlug: "",
   docs: [],
+  exam: null,
   progress: {},
   notes: []
 };
@@ -60,8 +61,25 @@ function renderBlockMarkdown(mdText) {
     }
   };
 
-  for (const rawLine of lines) {
-    const trimmed = rawLine.trim();
+  for (let index = 0; index < lines.length; index += 1) {
+    const trimmed = lines[index].trim();
+
+    const tableSeparator = lines[index + 1]?.trim();
+    if (/^\|.+\|$/.test(trimmed) && /^\|(?:\s*:?-{3,}:?\s*\|)+$/.test(tableSeparator || "")) {
+      closeLists();
+      const renderRow = (row, tag) => {
+        const cells = row.slice(1, -1).split("|");
+        return `<tr>${cells.map(cell => `<${tag}>${renderInlineMarkdown(cell.trim())}</${tag}>`).join("")}</tr>`;
+      };
+      out.push(`<div class="md-table"><table><thead>${renderRow(trimmed, "th")}</thead><tbody>`);
+      index += 1;
+      while (/^\|.+\|$/.test(lines[index + 1]?.trim() || "")) {
+        index += 1;
+        out.push(renderRow(lines[index].trim(), "td"));
+      }
+      out.push("</tbody></table></div>");
+      continue;
+    }
 
     if (!trimmed) {
       closeLists();
@@ -153,7 +171,8 @@ function parseStudyMarkdown(markdown, fileName = "") {
     diagnostico: [],
     material: [],
     simulado: [],
-    gabarito: []
+    gabarito: [],
+    revisao: []
   };
 
   let currentSection = null;
@@ -190,10 +209,14 @@ function parseStudyMarkdown(markdown, fileName = "") {
       continue;
     }
     if (
-      /^#{2,4}\s*Gabarito(?:\s+Comentado)?\s*:?\s*$/i.test(trimmed) ||
+      /^#{2,4}\s*(?:4\.\s*)?Gabarito(?:\s+Comentado)?\s*:?\s*$/i.test(trimmed) ||
       /^\*\*Gabarito(?:\s+Comentado)?\s*:?\*\*\s*:?\s*$/i.test(trimmed)
     ) {
       currentSection = "gabarito";
+      continue;
+    }
+    if (/^##\s*(?:5\.\s*)?Mapa de revis[ãa]o r[áa]pida\s*$/i.test(trimmed)) {
+      currentSection = "revisao";
       continue;
     }
 
@@ -233,7 +256,9 @@ function parseStudyMarkdown(markdown, fileName = "") {
     diagnostic,
     materialSections,
     questions,
-    gabaritoList
+    gabaritoList,
+    gabaritoResumoHtml: renderBlockMarkdown(sectionBuckets.gabarito.find(line => /^\*\*Gabarito resumido\*\*/i.test(line.trim()))),
+    revisaoHtml: renderBlockMarkdown(sectionBuckets.revisao.join("\n"))
   };
 }
 
@@ -360,7 +385,7 @@ function parseGabaritoLines(lines) {
 
     // Cabeçalho da questão no gabarito: **Questão 1:** ou **Questão 1 - Resposta: D** ou ### Questão 1
     const qHeaderMatch = trimmed.match(
-      /^(?:#{2,4}\s*)?(?:\*\*)?Quest[ãa]o\s*(\d+)(?:\s*[-–:.]\s*(.+?))?(?:\*\*)?\s*:?\s*$/i
+      /^(?:#{2,4}\s*)?(?:\*\*)?Quest[ãa]o\s*(\d+)(?:\s*[-–—:.]\s*(.+?))?(?:\*\*)?\s*:?\s*$/i
     );
 
     if (qHeaderMatch) {
@@ -457,6 +482,7 @@ function saveState() {
       noteScope: state.noteScope,
       githubRepoSlug: state.githubRepoSlug,
       docs: state.docs,
+      exam: examForStorage(),
       progress: state.progress,
       notes: state.notes
     }));
@@ -480,6 +506,7 @@ function loadState() {
     state.githubRepoSlug = typeof parsed.githubRepoSlug === "string" ? parsed.githubRepoSlug : "";
     state.docs = Array.isArray(parsed.docs) ? parsed.docs : [];
     state.activeDocId = parsed.activeDocId || (state.docs[0] ? state.docs[0].id : null);
+    state.exam = restoreSavedExam(parsed.exam);
     state.progress = parsed.progress && typeof parsed.progress === "object" ? parsed.progress : {};
     state.notes = Array.isArray(parsed.notes) ? parsed.notes : [];
   } catch (err) {
@@ -547,7 +574,7 @@ function renderDiagnosticoPanel(docId, parsed) {
       <div class="md-content">
         ${diag.tema ? `<p><strong>Tema Escolhido:</strong> ${renderInlineMarkdown(diag.tema)}</p>` : ""}
         ${diag.justificativa ? `<p><strong>Justificativa da Escolha:</strong> ${renderInlineMarkdown(diag.justificativa)}</p>` : ""}
-        ${!diag.tema && !diag.justificativa && diag.extraHtml ? diag.extraHtml : ""}
+        ${diag.extraHtml}
       </div>
     </div>
 
@@ -701,6 +728,13 @@ function renderSimuladoPanel(docId, parsed) {
         </div>
         <div class="question-statement">${q.statementHtml}</div>
         <div class="options-list">${optionsHtml}</div>
+        <label class="study-confidence">Confiança na questão ${escapeHtml(q.number)}
+          <select data-quiz-confidence="${q.id}">
+            <option value="">Sem marcação</option>
+            ${Object.entries(CONFIDENCE_LABELS).map(([value, label]) =>
+              `<option value="${value}" ${progress.confidence?.[q.id] === value ? "selected" : ""}>${label}</option>`).join("")}
+          </select>
+        </label>
         ${feedbackHtml}
       </article>
     `;
@@ -724,6 +758,15 @@ window.selectQuizOption = function(questionId, letter) {
   const doc = getActiveDoc();
   if (!doc) return;
   const prog = getDocProgress(doc.id);
+  const question = parseStudyMarkdown(doc.markdown, doc.fileName).questions.find(q => q.id === questionId);
+  if (!question || !question.options.some(opt => opt.letter === letter)) return;
+  if (question.correctLetter && (state.instantFeedback || prog.graded)) {
+    const previous = prog.answers[questionId];
+    if (previous && !questionHistory(doc.id, questionId)) {
+      recordStudyAnswer({ ...question, docId: doc.id }, previous, prog.confidence?.[questionId]);
+    }
+    recordStudyAnswer({ ...question, docId: doc.id }, letter, prog.confidence?.[questionId]);
+  }
   prog.answers[questionId] = letter;
   saveState();
   renderAll();
@@ -734,6 +777,7 @@ function gradeCurrentQuiz() {
   if (!doc) return;
   const prog = getDocProgress(doc.id);
   prog.graded = true;
+  recordBlockAnswers(doc);
   saveState();
   renderAll();
   showToast("Simulado corrigido e salvo!", "success");
@@ -743,7 +787,9 @@ function clearCurrentQuiz() {
   const doc = getActiveDoc();
   if (!doc) return;
   const prog = getDocProgress(doc.id);
+  if (prog.graded || state.instantFeedback) recordBlockAnswers(doc);
   prog.answers = {};
+  prog.confidence = {};
   prog.graded = false;
   saveState();
   renderAll();
@@ -757,7 +803,7 @@ function renderGabaritoPanel(parsed) {
     return;
   }
 
-  panel.innerHTML = parsed.gabaritoList.map(item => `
+  const cards = parsed.gabaritoList.map(item => `
     <div class="gabarito-item">
       <div class="card-header" style="margin-bottom: 8px;">
         <h3 class="card-title">Questão ${escapeHtml(item.qNum)}</h3>
@@ -766,6 +812,11 @@ function renderGabaritoPanel(parsed) {
       <div class="md-content">${item.commentHtml}</div>
     </div>
   `).join("");
+  panel.innerHTML = `
+    ${parsed.gabaritoResumoHtml ? `<div class="card md-content">${parsed.gabaritoResumoHtml}</div>` : ""}
+    ${cards}
+    ${parsed.revisaoHtml ? `<div class="card md-content"><h3>Mapa de revisão rápida</h3>${parsed.revisaoHtml}</div>` : ""}
+  `;
 }
 
 /* =========================================================================
@@ -916,6 +967,7 @@ function exportBackupJson() {
   const payload = {
     exportedAt: new Date().toISOString(),
     docs: state.docs,
+    exam: examForStorage(),
     progress: state.progress,
     notes: state.notes
   };
@@ -940,6 +992,7 @@ function importBackupJson(file) {
         state.docs = data.docs;
         state.activeDocId = data.docs[0] ? data.docs[0].id : null;
       }
+      if (Object.hasOwn(data, "exam") || Array.isArray(data.docs)) state.exam = restoreSavedExam(data.exam);
       if (data.progress && typeof data.progress === "object") {
         state.progress = data.progress;
       }
@@ -1250,6 +1303,7 @@ function renderActiveDocument() {
   const doc = getActiveDoc();
 
   if (!doc) {
+    clearInterval(examTicker);
     emptyView.style.display = "block";
     activeContainer.style.display = "none";
     return;
@@ -1268,7 +1322,7 @@ function renderActiveDocument() {
   const docNotesCount = state.notes.filter(n => n.docId === doc.id).length;
   document.getElementById("anotacoesCountBadge").textContent = String(docNotesCount);
 
-  const validTabs = ["diagnostico", "material", "simulado", "anotacoes", "gabarito"];
+  const validTabs = ["diagnostico", "material", "simulado", "anotacoes", "gabarito", "revisao", "edital", "prova"];
   if (!validTabs.includes(state.activeTab)) {
     state.activeTab = "diagnostico";
   }
@@ -1294,6 +1348,10 @@ function renderActiveDocument() {
   renderSimuladoPanel(doc.id, parsed);
   renderNotesPanel(doc.id, parsed);
   renderGabaritoPanel(parsed);
+  document.querySelectorAll("[data-study-tab]").forEach(button => {
+    button.setAttribute("aria-pressed", String(button.dataset.studyTab === state.activeTab));
+  });
+  renderStudyTools();
 }
 
 function renderAll() {
@@ -1318,6 +1376,7 @@ function resetApplication() {
     editingNoteId: null,
     githubRepoSlug: keptSlug,
     docs: [],
+    exam: null,
     progress: {},
     notes: []
   };
@@ -1336,6 +1395,7 @@ function setDrawerOpen(open) {
    EVENT LISTENERS & INICIALIZAÇÃO
    ========================================================================= */
 function bindEvents() {
+  bindStudyTools();
   // Drawer mobile
   document.getElementById("btnOpenDrawer").addEventListener("click", () => setDrawerOpen(true));
   document.getElementById("btnCloseDrawer").addEventListener("click", () => setDrawerOpen(false));
@@ -1471,6 +1531,8 @@ function bindEvents() {
   document.getElementById("btnGradeQuiz").addEventListener("click", gradeCurrentQuiz);
   document.getElementById("btnClearQuiz").addEventListener("click", clearCurrentQuiz);
   document.getElementById("chkInstantFeedback").addEventListener("change", (e) => {
+    const doc = getActiveDoc();
+    if (doc && (state.instantFeedback || e.target.checked)) recordBlockAnswers(doc);
     state.instantFeedback = e.target.checked;
     saveState();
     renderActiveDocument();
